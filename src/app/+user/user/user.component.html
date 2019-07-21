@@ -1,0 +1,19 @@
+<div fxLayoutAlign="center" [@routeAnimation]>
+  <div *ngIf="error$ | async">
+      Error: {{ (error$ | async) }}
+  </div>
+  <app-data-table *ngIf="!(error$ | async)"
+                  [data]="users$"
+                  [isProcessing]="isProcessing$ | async"
+                  [cols]="userTable.cols"
+                  [filterCol]="userTable.filterCol"
+                  [buttons]="userTable.buttons"
+                  [options]="userTable.options"
+                  (refreshClick)="refresh()">
+      <app-menu-group cssClass="qa-menu" icon="more_vert" tooltip="PUBLIC.SHARED.ACTION.TOOLTIP">
+          <app-menu-item cssClass="qa-menu_item__create" icon="add" text="{{ 'PUBLIC.USER.USER.USER_TABLE.CREATE' | translate }}"
+                         (menuClick)="createUser()">
+          </app-menu-item>
+      </app-menu-group>
+  </app-data-table>
+</div>

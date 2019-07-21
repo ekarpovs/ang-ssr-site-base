@@ -1,0 +1,95 @@
+﻿{
+  "APP_NAME": "ANG-SSR",
+  "DEFAULT_TITLE": "Angular ssr site base",
+  "DEFAULT_META_DESCRIPTION": "Angular ssr site base",
+  "PUBLIC": {
+    "SHARED": {
+      "ACTION": {
+        "TOOLTIP": "Комманды",
+        "EDIT": "Изменить",
+        "DELETE": "Удалить",
+        "SAVE": "Сохранить"
+      },
+      "WIDGET": {
+        "REFRESH_TOOLTIP": "Обновить"
+      },
+      "DATA_TABLE": {
+        "FILTER": "Фильтр"
+      },
+      "TAB": {
+        "TAB_GENERAL": "Главная"
+      }
+    },
+    "LOGIN": {
+      "PAGE_TITLE": "Вход",
+      "META_DESCRIPTION": "",
+      "USERNAME": "Имя пользователя",
+      "PASSWORD": "Пароль",
+      "LOG_IN": "Вход",
+      "GO_TO_REGISTER": "Регистрация",
+      "CANCEL": "Отмена",
+      "NOTE": "Вход...",
+      "ERROR": "Вход - ошибка!"
+    },
+    "REGISTER": {
+      "PAGE_TITLE": "Регистрация",
+      "META_DESCRIPTION": "",
+      "USERNAME": "Имя пользователя",
+      "PASSWORD": "Пароль",
+      "REGISTER": "Регистрация",
+      "GO_TO_LOGIN": "Вход",
+      "CANCEL": "Отмена",
+      "NOTE": "Регистрация ...",
+      "ERROR": "Регистрация - ошибка!"
+    },
+    "LOGOUT": {
+      "PAGE_TITLE": "Выход",
+      "META_DESCRIPTION": "",
+      "USERNAME": "Имя пользователя",
+      "LOG_OUT": "Выход",
+      "NOTE": "Выход...",
+      "ERROR": ""
+    },
+    "HOME": {
+      "MENU_TITLE": "Главная",
+      "PAGE_TITLE": "",
+      "META_DESCRIPTION": "ANG-SSR - Добро пожаловать",
+      "CARD_TITLE": "Главная",
+      "CARD_SUBTITLE": "ANG-SSR - Добро пожаловать"
+    },
+    "USER": {
+      "USER": {
+        "MENU_TITLE": "Пользователи",
+        "PAGE_TITLE": "Пользователи",
+        "META_DESCRIPTION": "Пользователи",
+        "USER_TABLE": {
+          "TITLE": "Пользователи",
+          "ID_COL_TITLE": "ID",
+          "NAME_COL_TITLE": "Имя пользователя",
+          "CREATE": "Добавить"
+        },
+        "USER_DETAIL": {
+          "MENU_TITLE": "Пользователь",
+          "PAGE_TITLE": "Пользователь",
+          "NAME": "Имя пользователя"
+        }
+      }
+    },
+    "ABOUT": {
+      "ABOUT": {
+        "MENU_TITLE": "О сайте",
+        "PAGE_TITLE": "О сайте",
+        "META_DESCRIPTION": "Эта  страница  приводит краткое описание сервиса",
+        "CARD_TITLE": "О сервисе",
+        "CARD_SUBTITLE": "Эта  страница  приводит краткое описание сервиса"
+      },
+      "ABOUT_US": {
+        "MENU_TITLE": "О нас",
+        "PAGE_TITLE": "О нас",
+        "META_DESCRIPTION": "Эта  страница о нас",
+        "CARD_TITLE": "О нас",
+        "CARD_SUBTITLE": "Эта  страница о нас"
+      }
+    }
+  }
+}

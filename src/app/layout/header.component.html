@@ -1,0 +1,45 @@
+﻿<mat-toolbar class="header mat-elevation-z1" color="primary">
+    <span>
+        <mat-icon class="header__logo">developer_board</mat-icon>
+        <span>{{ title | translate }}</span>
+    </span>
+    <button mat-button [routerLink]="['/', '']">
+        {{ 'PUBLIC.HOME.MENU_TITLE' | translate }}
+    </button>
+    <span fxFlex></span>
+
+    <span *ngIf="isAuthenticated">
+        <button mat-button [routerLink]="['/', 'user', 'users']">
+            {{ 'PUBLIC.USER.USER.MENU_TITLE' | translate }}
+        </button>
+    </span>
+    <span fxFlex></span>
+    <button mat-button [routerLink]="['/', 'about']">
+        {{ 'PUBLIC.ABOUT.ABOUT.MENU_TITLE' | translate }}
+    </button>
+    <button mat-button [routerLink]="['/', 'about', 'us', 22]">
+        {{ 'PUBLIC.ABOUT.ABOUT_US.MENU_TITLE' | translate }}
+    </button>
+    <a mat-button href="https://www.github.com/ekarpovs">
+        Github
+    </a>
+    <ng-container>
+        <button *ngIf="!isAuthenticated" mat-icon-button [routerLink]="['/', 'login']">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <button *ngIf="isAuthenticated" class="qa-header__logout" mat-icon-button (click)="logout()">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </ng-container>
+    <mat-menu #i18nMenu="matMenu" yPosition="below" xPosition="before" [overlapTrigger]="false">
+        <button *ngFor="let language of availableLanguages; trackBy: trackByFn"
+                mat-menu-item
+                [ngClass]="'header__language-' + language.code"
+                [routerLink]="['/', 'change-language', language.code]">
+            {{ language.name }}
+        </button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="i18nMenu">
+        <mat-icon>language</mat-icon>
+    </button>
+</mat-toolbar>

@@ -1,0 +1,94 @@
+{
+  "APP_NAME": "ANG-SSR",
+  "DEFAULT_TITLE": "Angular ssr site base",
+  "DEFAULT_META_DESCRIPTION": "Angular ssr site base",
+  "PUBLIC": {
+    "SHARED": {
+      "ACTION": {
+        "TOOLTIP": "Actions",
+        "CANCEL": "Cancel",
+        "EDIT": "Edit",
+        "DELETE": "Delete",
+        "SAVE": "Save"
+      },
+      "WIDGET": {
+        "REFRESH_TOOLTIP": "Refresh"
+      },
+      "DATA_TABLE": {
+        "FILTER": "Filter results"
+      },
+      "TAB": {
+        "TAB_GENERAL": "General"
+      }
+    },
+    "LOGIN": {
+      "PAGE_TITLE": "Log in",
+      "META_DESCRIPTION": "",
+      "USERNAME": "Username",
+      "PASSWORD": "Password",
+      "LOG_IN": "Log in",
+      "GO_TO_REGISTER": "Register",
+      "CANCEL": "Cancel",
+      "NOTE": "Trying to log in...",
+      "ERROR": "Login unsuccessful!"
+    },
+    "REGISTER": {
+      "PAGE_TITLE": "Register",
+      "META_DESCRIPTION": "",
+      "USERNAME": "Username",
+      "PASSWORD": "Password",
+      "REGISTER": "Register",
+      "NOTE": "Trying to register...",
+      "ERROR": "Register unsuccessful!"
+    },
+    "LOGOUT": {
+      "PAGE_TITLE": "Logout",
+      "META_DESCRIPTION": "",
+      "USERNAME": "Username",
+      "LOG_OUT": "Logout",
+      "NOTE": "By, by...",
+      "ERROR": ""
+    },
+    "HOME": {
+      "MENU_TITLE": "Home",
+      "PAGE_TITLE": "",
+      "META_DESCRIPTION": "Welcome to ANG-SSR",
+      "CARD_TITLE": "Home",
+      "CARD_SUBTITLE": "Welcome to ANG-SSR"
+    },
+    "USER": {
+      "USER": {
+        "MENU_TITLE": "Users",
+        "PAGE_TITLE": "Users",
+        "META_DESCRIPTION": "User Universal table",
+        "USER_TABLE": {
+          "TITLE": "Users",
+          "ID_COL_TITLE": "ID",
+          "NAME_COL_TITLE": "User name",
+          "CREATE": "Create a new user"
+        },
+        "USER_DETAIL": {
+          "MENU_TITLE": "User",
+          "PAGE_TITLE": "User",
+          "NAME": "User name"
+        }
+      }
+    },
+    "ABOUT": {
+      "ABOUT": {
+        "MENU_TITLE": "About",
+        "PAGE_TITLE": "About",
+        "META_DESCRIPTION": "This page provides a dummy overview of nothing",
+        "CARD_TITLE": "About",
+        "CARD_SUBTITLE": "This page provides a dummy overview of nothing"
+      },
+      "ABOUT_US": {
+        "MENU_TITLE": "Who are we",
+        "PAGE_TITLE": "Who are we",
+        "META_DESCRIPTION": "Yeah, I think this page tells something about us",
+        "CARD_TITLE": "Us",
+        "CARD_SUBTITLE": "Yeah, I think this page tells something about us"
+      }
+    }
+  }
+}

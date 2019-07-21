@@ -1,0 +1,7 @@
+<app-login
+  [error]="error$ | async"
+  [pending]="pending$ | async"
+  (login)="login($event)"
+  (cancel)="cancel($event)"
+  >
+</app-login>
