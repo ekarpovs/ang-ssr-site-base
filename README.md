@@ -1,5 +1,5 @@
 <!-- prettier-ignore-start -->
-[![CircleCI](https://circleci.com/gh/ekarpovs/ang-ssr-site-base.svg?style=shield&circle-token=899e0a07095896530e345a60808eff6ba4579db3)](https://circleci.com/gh/ekarpovs/ang-ssr-site-base)
+[![CircleCI](https://circleci.com/gh/ekarpovs/ang-ssr-site-base.svg?style=shield)](https://circleci.com/gh/ekarpovs/ang-ssr-site-base)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 <!-- prettier-ignore-end -->
