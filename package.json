@@ -1,7 +1,7 @@
 {
   "name": "ang-ssr-site-base",
   "version": "7.0.0",
-  "description": "VS based on seed project for Angular Universal apps featuring Server-Side Rendering (SSR), Webpack, CLI scaffolding, dev/prod modes, AoT compilation, HMR, SCSS compilation, lazy loading, config, cache, i18n, SEO, and TSLint/codelyzer",
+  "description": "ANG-SSR based on seed project for Angular Universal apps featuring Server-Side Rendering (SSR), Webpack, CLI scaffolding, dev/prod modes, AoT compilation, HMR, SCSS compilation, lazy loading, config, cache, i18n, SEO, and TSLint/codelyzer",
   "repository": {
     "type": "git",
     "url": "https://github.com/ekarpovs/ang-ssr-site-base.git"
