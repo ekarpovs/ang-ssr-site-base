@@ -4,7 +4,7 @@
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 <!-- prettier-ignore-end -->
 
-**`ang-ssr-site-base`** is a client project for VSign service site, based on: <https://github.com/ng-seed/universal>  
+**`ang-ssr-site-base`** is a client project for a site, based on: <https://github.com/ng-seed/universal>  
 
 Application organization, providing the following features:
 
@@ -44,15 +44,23 @@ You can find the **project documentation** [here](https://github.com/ekarpovs/an
 
 ## Table of contents
 
-- [Prerequisites](#prerequisites)
-- [Getting started](#getting-started)
-  - [Installation](#installation)
-  - [Setting up upstream repository](#setting-up-upstream-repository)
-  - [Development and builds](#development-and-builds)
-  - [CLI Scaffolding](#cli-scaffolding)
-- [Directory structure](#directory-structure)
-- [Contributing](#contributing)
-- [License](#license)
+- [Table of contents](#Table-of-contents)
+- [Prerequisites](#Prerequisites)
+- [Getting started](#Getting-started)
+  - [Installation](#Installation)
+  - [Setting up upstream repository](#Setting-up-upstream-repository)
+  - [Development and builds](#Development-and-builds)
+    - [Install dependencies](#Install-dependencies)
+    - [Development servers](#Development-servers)
+    - [Build](#Build)
+    - [Running tests](#Running-tests)
+  - [CLI Scaffolding](#CLI-Scaffolding)
+    - [Example](#Example)
+      - [Initial store setup](#Initial-store-setup)
+      - [Feature store module setup](#Feature-store-module-setup)
+      - [Container & child components setup](#Container--child-components-setup)
+- [Directory structure](#Directory-structure)
+- [License](#License)
 
 ## Prerequisites
 
