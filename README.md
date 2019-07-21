@@ -61,6 +61,7 @@ You can find the **project documentation** [here](https://github.com/ekarpovs/an
       - [Container & child components setup](#Container--child-components-setup)
 - [Directory structure](#Directory-structure)
 - [License](#License)
+- [Known issues](#Known-issues)
 
 ## Prerequisites
 
@@ -399,3 +400,18 @@ Copyright (c) 2019 [Evgeny Karpovsky]
 [angular-tslint-rules]: https://github.com/ng-seed/angular-tslint-rules
 [TSLint]: https://github.com/palantir/tslint
 [codelyzer]: https://github.com/mgechev/codelyzer
+
+## Known issues
+
+1. ngx-cache/fs-storage
+Error: EEXIST: file already exists, mkdir 'D:\Projects\vs-site\.cache'
+    at Object.mkdirSync (fs.js:768:3)
+    at new FsStorageService (D:\Projects\vs-site\node_modules\@ngx-cache\fs-storage\bundles\ngx-cache-fs-storage.umd.js:131:20)
+    at _createClass (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21284:24)
+    at _createProviderInstance (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21256:30)
+    at resolveNgModuleDep (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21220:25)
+    at NgModuleRef_.get (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21928:20)
+    at new FsCacheService (D:\Projects\vs-site\node_modules\@ngx-cache\platform-server\bundles\ngx-cache-platform-server.umd.js:41:39)
+    at _createClass (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21286:24)
+    at _createProviderInstance (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21256:30)
+    at resolveNgModuleDep (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21220:25)
