@@ -22,9 +22,8 @@ export class AuthService {
     };
     const settingsKey = ['backend', 'auth', 'auth'];
     const backend = this.config.getSettings(settingsKey);
-    // console.info(`login( Logging into API "${backend}" with creds: ${params.username} / ${params.password} )`);
 
-    return this.http.post<any>(backend.endpoint, { name: loginCredentials.username, password: loginCredentials.password }).pipe(
+    return this.http.post<any>(backend.endpoint, params).pipe(
       map((response: AuthResponse): Auth =>          
         ({
             ...params,
@@ -41,9 +40,8 @@ export class AuthService {
       username: registerCredentials.username,
       password: registerCredentials.password
     };
-    const settingsKey = ['backend', 'api', 'user'];
+    const settingsKey = ['backend', 'admin', 'user'];
     const backend = this.config.getSettings(settingsKey);
-    // console.info(`login( Logging into API "${backend}" with creds: ${params.username} / ${params.password} )`);
 
     return this.http.post<any>(backend.endpoint, params).pipe(
       map((response: AuthResponse): Auth =>          
