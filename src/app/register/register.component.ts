@@ -100,7 +100,7 @@ export class RegisterComponent implements OnInit {
      * Accessor for the form's value, aka the data container object representing the
      * form field's current values.
      */
-    public getFormValue(): RegisterCredentials {
+    getFormValue(): RegisterCredentials {
         return {
             firstName: FormUtil.getFormFieldValue(this.registerForm, "firstName"),
             lastName: FormUtil.getFormFieldValue(this.registerForm, "lastName"),

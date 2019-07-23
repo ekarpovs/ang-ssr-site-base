@@ -57,7 +57,7 @@ export class LoginContainerComponent implements OnInit {
     /**
      * Switch to register view.
      */
-    register(event: any) {      
+    register(event: any): void {      
         this.store$.dispatch(rtrActions.rtrGo({
             router: this.router,
             route: [appRoutePaths.register]

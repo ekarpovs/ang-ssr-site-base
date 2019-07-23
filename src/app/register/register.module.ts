@@ -4,8 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '~/app/framework/material';
 import { SharedModule } from '~/app/shared';
 
-import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterContainerComponent } from './register-container.component';
+import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
 
 const MODULES = [
