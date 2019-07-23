@@ -24,6 +24,13 @@ export function reducer(state: State = initialState, action: AuthAction): State 
         }),
         authLogoutFail: errorFn<State>(state),
 
+        authRegister: () => startProcessingFn<State>(state),
+        authRegisterSuccess: (response: Auth) => ({
+          ...stopProcessingFn<State>(state),
+          token: response.token
+        }),
+        authRegisterFail: errorFn<State>(state),
+
         authNavigateToLogin: () => startProcessingFn<State>(state),
         authNavigateToLoginSuccess: (response: string) => ({
           ...stopProcessingFn<State>(state),

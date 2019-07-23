@@ -5,7 +5,7 @@ import { ConfigService } from '@ngx-config/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Auth, AuthResponse, LoginCredentials } from "./models/auth.model";
+import { Auth, AuthResponse, LoginCredentials, RegisterCredentials } from "./models/auth.model";
 
 
 @Injectable({
@@ -32,8 +32,28 @@ export class AuthService {
         })
       )
     );
-}
+  }
 
+  register$(registerCredentials: RegisterCredentials): Observable<Auth> {
+    const params = {
+      firstname: registerCredentials.firstName,
+      lastname: registerCredentials.lastName,
+      username: registerCredentials.username,
+      password: registerCredentials.password
+    };
+    const settingsKey = ['backend', 'api', 'user'];
+    const backend = this.config.getSettings(settingsKey);
+    // console.info(`login( Logging into API "${backend}" with creds: ${params.username} / ${params.password} )`);
+
+    return this.http.post<any>(backend.endpoint, params).pipe(
+      map((response: AuthResponse): Auth =>          
+        ({
+            ...params,
+            token: response.idToken
+        })
+      )
+    );
+  }
 
 
   logout$(): Observable<Auth> {

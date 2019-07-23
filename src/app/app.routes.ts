@@ -16,6 +16,10 @@ export const routes = [
         loadChildren: './login/login.module#LoginModule'
       },
       {
+        path: appRoutePaths.register,
+        loadChildren: './register/register.module#RegisterModule'
+      },
+      {
         path: appRoutePaths.home,
         loadChildren: './+home/home.module#HomeModule'
       },

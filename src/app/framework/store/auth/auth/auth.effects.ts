@@ -68,6 +68,33 @@ export class AuthEffects {
       )
   );
 
+  @Effect() register$ = this.actions$.pipe(
+    filter(authActions.is.authRegister),
+    map(get('payload')),
+    switchMap(payload =>
+      flow(
+        get('resource'),
+        negate(isNil)
+      )(payload)
+      ? this.auth.register$(payload.resource).pipe(
+          map(authActions.authRegisterSuccess),
+          tap(async () => payload.router.navigate(payload.route)),
+          catchError(error =>
+            observableOf(
+              authActions.authRegisterFail(
+                error.message
+              )
+            )
+          )
+        )
+      : observableOf(
+        authActions.authRegisterFail(
+              ERROR__NO_PAYLOAD.message
+        )
+      )
+    )
+  );
+
   @Effect() navigateTo$ = this.actions$.pipe(
     filter(authActions.is.authNavigateToLogin),
     map(get('payload')),

@@ -35,9 +35,12 @@
     "REGISTER": {
       "PAGE_TITLE": "Register",
       "META_DESCRIPTION": "",
+      "FIRSTNAME": "Firstname",
+      "LASTNAME": "Lastname",
       "USERNAME": "Username",
       "PASSWORD": "Password",
       "REGISTER": "Register",
+      "CANCEL": "Cancel",
       "NOTE": "Trying to register...",
       "ERROR": "Register unsuccessful!"
     },
