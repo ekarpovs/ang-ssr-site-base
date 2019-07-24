@@ -29,9 +29,9 @@ export class UserComponent extends BaseContainerComponent implements OnInit {
     this.userTable = {
       cols: [
         createColumn('_id', 'PUBLIC.USER.USER.USER_TABLE.ID_COL_TITLE'),
-        createColumn('name', 'PUBLIC.USER.USER.USER_TABLE.NAME_COL_TITLE')
+        createColumn('username', 'PUBLIC.USER.USER.USER_TABLE.NAME_COL_TITLE')
       ],
-      filterCol: 'name',
+      filterCol: 'username',
       buttons: [
         createRouteButton('', 'edit', 'PUBLIC.SHARED.ACTION.EDIT', this.baseRoute, '_id'),
         createRouteButton('', 'delete', 'PUBLIC.SHARED.ACTION.DELETE', this.baseRoute, '_id')

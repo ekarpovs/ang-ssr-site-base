@@ -64,8 +64,8 @@
         "META_DESCRIPTION": "Пользователи",
         "USER_TABLE": {
           "TITLE": "Пользователи",
-          "ID_COL_TITLE": "ID",
-          "NAME_COL_TITLE": "Имя пользователя",
+          "ID_COL_TITLE": "#",
+          "NAME_COL_TITLE": "Имя",
           "CREATE": "Добавить"
         },
         "USER_DETAIL": {

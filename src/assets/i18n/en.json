@@ -67,7 +67,7 @@
         "USER_TABLE": {
           "TITLE": "Users",
           "ID_COL_TITLE": "ID",
-          "NAME_COL_TITLE": "User name",
+          "NAME_COL_TITLE": "Name",
           "CREATE": "Create a new user"
         },
         "USER_DETAIL": {
