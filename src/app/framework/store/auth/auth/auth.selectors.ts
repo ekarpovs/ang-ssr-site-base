@@ -17,3 +17,8 @@ export const getToken = createSelector(
   getState,
   state => get('token')(state)
 );
+
+export const getExpired = createSelector(
+  getState,
+  state => get('expired')(state)
+);
