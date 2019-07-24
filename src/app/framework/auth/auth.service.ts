@@ -5,7 +5,7 @@ import { ConfigService } from '@ngx-config/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Auth, AuthResponse, LoginCredentials, RegisterCredentials } from "./models/auth.model";
+import { AuthResponse, LoginCredentials, RegisterCredentials } from "./models/auth.model";
 
 
 @Injectable({
@@ -15,7 +15,7 @@ export class AuthService {
   constructor(protected readonly config: ConfigService, protected readonly http: HttpClient) {}
 
 
-  login$(loginCredentials: LoginCredentials): Observable<Auth> {
+  login$(loginCredentials: LoginCredentials): Observable<AuthResponse> {
     const params = {
         username: loginCredentials.username,
         password: loginCredentials.password
@@ -24,16 +24,16 @@ export class AuthService {
     const backend = this.config.getSettings(settingsKey);
 
     return this.http.post<any>(backend.endpoint, params).pipe(
-      map((response: AuthResponse): Auth =>          
+      map((response: AuthResponse): AuthResponse =>          
         ({
             ...params,
-            token: response.idToken
+            idToken: response.idToken
         })
       )
     );
   }
 
-  register$(registerCredentials: RegisterCredentials): Observable<Auth> {
+  register$(registerCredentials: RegisterCredentials): Observable<AuthResponse> {
     const params = {
       firstname: registerCredentials.firstName,
       lastname: registerCredentials.lastName,
@@ -44,24 +44,19 @@ export class AuthService {
     const backend = this.config.getSettings(settingsKey);
 
     return this.http.post<any>(backend.endpoint, params).pipe(
-      map((response: AuthResponse): Auth =>          
+      map((response: AuthResponse): AuthResponse =>          
         ({
             ...params,
-            token: response.idToken
+            idToken: response.idToken
         })
       )
     );
   }
 
 
-  logout$(): Observable<Auth> {
-    const auth: Auth = {
-      username: '',
-      password: '',
-      token: ''
-    };
-    const subject = new BehaviorSubject<Auth>(auth);
+  logout$(): Observable<AuthResponse> {
+    const subject = new BehaviorSubject<AuthResponse>({idToken: ''});
 
-    return subject as Observable<Auth>;
+    return subject as Observable<AuthResponse>;
   }
 }

@@ -1,4 +1,4 @@
-import { Auth } from '~/app/framework/auth/models/auth.model';
+import { AuthResponse } from '~/app/framework/auth/models/auth.model';
 import { errorFn, startProcessingFn, stopProcessingFn } from '~/app/framework/ngrx';
 
 import { initialState, State } from '../auth.state';
@@ -11,23 +11,23 @@ import { AuthAction, authActions } from './auth.actions';
 export function reducer(state: State = initialState, action: AuthAction): State {
     return authActions.match({
         authLogin: () => startProcessingFn<State>(state),
-        authLoginSuccess: (response: Auth) => ({
+        authLoginSuccess: (response: AuthResponse) => ({
           ...stopProcessingFn<State>(state),
-          token: response.token
+          token: response.idToken
         }),
         authLoginFail: errorFn<State>(state),
 
         authLogout: () => startProcessingFn<State>(state),
-        authLogoutSuccess: (response: Auth) => ({
+        authLogoutSuccess: (response: AuthResponse) => ({
           ...stopProcessingFn<State>(state),
-          token: response.token
+          token: response.idToken
         }),
         authLogoutFail: errorFn<State>(state),
 
         authRegister: () => startProcessingFn<State>(state),
-        authRegisterSuccess: (response: Auth) => ({
+        authRegisterSuccess: (response: AuthResponse) => ({
           ...stopProcessingFn<State>(state),
-          token: response.token
+          token: response.idToken
         }),
         authRegisterFail: errorFn<State>(state),
 

@@ -8,10 +8,6 @@ export interface RegisterCredentials extends LoginCredentials {
     lastName: string;
 }
 
-export interface Auth extends LoginCredentials {
-    token: string;
-}
-
 export interface AuthResponse {
     idToken: string;
 }
