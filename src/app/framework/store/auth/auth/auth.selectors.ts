@@ -22,3 +22,8 @@ export const getExpired = createSelector(
   getState,
   state => get('expired')(state)
 );
+
+export const getUser = createSelector(
+  getState,
+  state => get('user')(state)
+);
