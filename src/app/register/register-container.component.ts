@@ -38,7 +38,7 @@ export class RegisterContainerComponent implements OnInit {
      * Initialize the component.
      */
     ngOnInit(): void {
-        this.baseRoute = ['/', appRoutePaths.home];
+        this.baseRoute = ['/', appRoutePaths.login];
         this.error$ = this.store$.pipe(select(fromState.getError));
         this.pending$ = this.store$.pipe(select(fromState.getIsProcessing));
     }
