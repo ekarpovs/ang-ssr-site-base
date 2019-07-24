@@ -27,7 +27,9 @@ export class AuthService {
       map((response: AuthResponse): AuthResponse =>          
         ({
             ...params,
-            idToken: response.idToken
+            idToken: response.idToken,
+            expiresIn: response.expiresIn,
+            currentUser: response.currentUser
         })
       )
     );
@@ -47,7 +49,9 @@ export class AuthService {
       map((response: AuthResponse): AuthResponse =>          
         ({
             ...params,
-            idToken: response.idToken
+            idToken: response.idToken,
+            expiresIn: response.expiresIn,
+            currentUser: response.currentUser
         })
       )
     );
@@ -55,7 +59,8 @@ export class AuthService {
 
 
   logout$(): Observable<AuthResponse> {
-    const subject = new BehaviorSubject<AuthResponse>({idToken: ''});
+    const curUser = { id: '', name: '' };
+    const subject = new BehaviorSubject<AuthResponse>({idToken: '', expiresIn: 0, currentUser: curUser });
 
     return subject as Observable<AuthResponse>;
   }

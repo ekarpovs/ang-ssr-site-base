@@ -8,6 +8,12 @@ export interface RegisterCredentials extends LoginCredentials {
     lastName: string;
 }
 
+export interface CurrentUser {
+    id: string;
+    name: string;
+}
 export interface AuthResponse {
     idToken: string;
+    expiresIn: number;
+    currentUser: CurrentUser; 
 }

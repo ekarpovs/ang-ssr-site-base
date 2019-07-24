@@ -13,21 +13,22 @@ export function reducer(state: State = initialState, action: AuthAction): State 
         authLogin: () => startProcessingFn<State>(state),
         authLoginSuccess: (response: AuthResponse) => ({
           ...stopProcessingFn<State>(state),
-          token: response.idToken
+          token: response.idToken,
+          expired: response.expiresIn,
+          user: response.currentUser
         }),
         authLoginFail: errorFn<State>(state),
 
         authLogout: () => startProcessingFn<State>(state),
         authLogoutSuccess: (response: AuthResponse) => ({
-          ...stopProcessingFn<State>(state),
-          token: response.idToken
+          ...stopProcessingFn<State>(initialState),
         }),
         authLogoutFail: errorFn<State>(state),
 
         authRegister: () => startProcessingFn<State>(state),
         authRegisterSuccess: (response: AuthResponse) => ({
           ...stopProcessingFn<State>(state),
-          token: response.idToken
+          user: response.currentUser
         }),
         authRegisterFail: errorFn<State>(state),
 
