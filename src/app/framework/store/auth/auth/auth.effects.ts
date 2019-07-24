@@ -28,7 +28,7 @@ export class AuthEffects {
           catchError(error =>
             observableOf(
               authActions.authLoginFail(
-                error.message
+                error.error
               )
             )
           )
@@ -55,7 +55,7 @@ export class AuthEffects {
           catchError(error =>
             observableOf(
               authActions.authLogoutFail(
-                error.message
+                error.error
               )
             )
           )
@@ -82,7 +82,7 @@ export class AuthEffects {
           catchError(error =>
             observableOf(
               authActions.authRegisterFail(
-                error.message
+                error.error
               )
             )
           )

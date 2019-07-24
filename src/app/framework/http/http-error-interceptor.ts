@@ -18,10 +18,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         }
 
         // If you want to return a new response:
-        return of(new HttpResponse({ body: [{ status: `${error.status}`, error: `${error.message}` }] }));
+        // return of(new HttpResponse({ body: [{ status: `${error.status}`, error: `${error.message}` }] }));
 
         // If you want to return the error on the upper level:
-        // return throwError(error);
+        return throwError(error);
 
         // or just return nothing:
         // return EMPTY;
