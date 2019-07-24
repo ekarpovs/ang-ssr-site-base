@@ -62,14 +62,14 @@ export class RegisterComponent implements OnInit {
         this.registerForm = new FormGroup(
             this.formBuilder.group({
                 firstName: [
-                    ""
+                    "Fn00"
                     // [
                     //     Validators.required,
                     //     Validators.maxLength(ValidationUtil.VALIDATION_RULE.FIRST_NAME.MAX_LENGTH)
                     // ]
                 ],
                 lastName: [
-                    ""
+                    "Ln00"
                     // [
                     //     Validators.required,
                     //                     //     Validators.maxLength(ValidationUtil.VALIDATION_RULE.FIRST_NAME.MAX_LENGTH)
