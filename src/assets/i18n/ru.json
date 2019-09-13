@@ -1,7 +1,7 @@
 ﻿{
-  "APP_NAME": "ANG-SSR",
-  "DEFAULT_TITLE": "Angular ssr site base",
-  "DEFAULT_META_DESCRIPTION": "Angular ssr site base",
+  "APP_NAME": "VS",
+  "DEFAULT_TITLE": "VS глобальный сервис",
+  "DEFAULT_META_DESCRIPTION": "VS - глобальный сервис",
   "PUBLIC": {
     "SHARED": {
       "ACTION": {
@@ -53,9 +53,9 @@
     "HOME": {
       "MENU_TITLE": "Главная",
       "PAGE_TITLE": "",
-      "META_DESCRIPTION": "ANG-SSR - Добро пожаловать",
+      "META_DESCRIPTION": "VS Добро пожаловать",
       "CARD_TITLE": "Главная",
-      "CARD_SUBTITLE": "ANG-SSR - Добро пожаловать"
+      "CARD_SUBTITLE": "VS Добро пожаловать"
     },
     "USER": {
       "USER": {
@@ -64,28 +64,32 @@
         "META_DESCRIPTION": "Пользователи",
         "USER_TABLE": {
           "TITLE": "Пользователи",
-          "ID_COL_TITLE": "#",
-          "NAME_COL_TITLE": "Имя",
+          "ID_COL_TITLE": "ID",
+          "ACCESS_COL_TITLE": "Дооступ",
+          "LOCKED_COL_TITLE": "Блокирован",
+          "NAME_COL_TITLE": "Имя пользователя",
           "CREATE": "Добавить"
         },
         "USER_DETAIL": {
           "MENU_TITLE": "Пользователь",
           "PAGE_TITLE": "Пользователь",
-          "NAME": "Имя пользователя"
+          "NAME": "Имя пользователя",
+          "E-MAIL": "Эл. почта",
+          "PASSWORD": "Пароль"
         }
       }
     },
     "ABOUT": {
       "ABOUT": {
-        "MENU_TITLE": "О сайте",
-        "PAGE_TITLE": "О сайте",
+        "MENU_TITLE": "О сервисе",
+        "PAGE_TITLE": "О сервисе",
         "META_DESCRIPTION": "Эта  страница  приводит краткое описание сервиса",
         "CARD_TITLE": "О сервисе",
         "CARD_SUBTITLE": "Эта  страница  приводит краткое описание сервиса"
       },
-      "ABOUT_US": {
-        "MENU_TITLE": "О нас",
-        "PAGE_TITLE": "О нас",
+      "WHO_ARE_WE": {
+        "MENU_TITLE": "Кто мы",
+        "PAGE_TITLE": "Кто мы",
         "META_DESCRIPTION": "Эта  страница о нас",
         "CARD_TITLE": "О нас",
         "CARD_SUBTITLE": "Эта  страница о нас"

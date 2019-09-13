@@ -1,18 +1,16 @@
-<mat-tab-group [@routeAnimation]>
-    <mat-tab label="{{ 'PUBLIC.SHARED.TAB.TAB_GENERAL' | translate }}">
-        <div class="card--narrow" fxLayout="column" fxFlex="100%">
-            <div *ngIf="error$ | async">
-                Error: {{ (error$ | async) }}
-            </div>
-            <app-card [title]="'PUBLIC.USER.USER.USER_DETAIL.PAGE_TITLE'"
-                      [data]="user$ | async"
-                      [isProcessing]="isProcessing$ | async">
-                <app-user-detail *ngIf="!(isProcessing$ | async)"
-                                    [user]="user$ | async"
-                                    (deleteClick)="delete($event)"
-                                    (saveClick)="save($event)">
-                </app-user-detail>
-            </app-card>
-        </div>
-    </mat-tab>
-</mat-tab-group>
+<div [@routeAnimation] class="card--narrow" fxLayout="column" fxFlex="100%">
+    <div *ngIf="error$ | async">
+        Error: {{ (error$ | async) }}
+    </div>
+    <app-card 
+        [data]="user$ | async"
+        [isProcessing]="isProcessing$ | async">
+        <app-user-detail *ngIf="!(isProcessing$ | async)"
+            [user]="user$ | async"
+            [deleteCommand]="deleteCommand"
+            (cancelClick)="cancel($event)"
+            (deleteClick)="delete($event)"
+            (saveClick)="save($event)">
+        </app-user-detail>
+    </app-card>
+</div>

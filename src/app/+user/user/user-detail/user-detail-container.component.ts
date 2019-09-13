@@ -6,10 +6,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { getOr, isNil } from 'lodash/fp';
 import { Observable, of as observableOf, zip } from 'rxjs';
 import { skipWhile, switchMap, takeUntil } from 'rxjs/operators';
+import { appRoutePaths } from '~/app/app.routes.paths';
 import { BaseContainerComponent } from '~/app/framework/core';
 import { UniqueId } from '~/app/framework/ngrx';
+import { rtrActions } from '~/app/framework/store/rtr/rtr/rtr.actions';
 import { RenderFlag, routeAnimation } from '~/app/shared';
-import { State, User, userActions, UserSelectors } from '~/app/store';
+import { AuthSelectors , State, User, userActions, UserSelectors} from '~/app/store';
 
 @Component({
   templateUrl: './user-detail-container.component.html',
@@ -20,6 +22,7 @@ import { State, User, userActions, UserSelectors } from '~/app/store';
 export class UserDetailContainerComponent extends BaseContainerComponent implements OnInit {
   user$: Observable<User>;
   baseRoute: Array<string>;
+  deleteCommand = false;
 
   constructor(
     private readonly router: Router,
@@ -32,34 +35,35 @@ export class UserDetailContainerComponent extends BaseContainerComponent impleme
   }
 
   ngOnInit(): void {
-    this.baseRoute = ['/', 'user', 'users'];
+    this.baseRoute = ['/', appRoutePaths.users];
 
     this.isProcessing$ = this.store$.pipe(select(UserSelectors.getIsProcessing));
     this.error$ = this.store$.pipe(select(UserSelectors.getError));
     this.user$ = this.store$.pipe(select(UserSelectors.getSelected));
 
     this.user$
-      .pipe(
-        skipWhile(isNil),
-        switchMap(res => zip(this.route.data, observableOf(res))),
-        switchMap(([data, user]) => zip(this.translate.get(data.meta.title), observableOf(user))),
-        takeUntil(this.ngUnsubscribe)
-      )
-      .subscribe(([title, user]: Array<any>) => {
-        const subtitle = getOr('')('name')(user);
+    .pipe(
+      skipWhile(isNil),
+      switchMap(res => zip(this.route.data, observableOf(res))),
+      switchMap(([data, user]) => zip(this.translate.get(data.meta.title), observableOf(user))),
+      takeUntil(this.ngUnsubscribe)
+    )
+    .subscribe(([title, user]: Array<any>) => {
+      const subtitle = getOr('')('username')(user);
 
-        this.meta.setTitle(subtitle ? `${title} - ${subtitle}` : title);
-      });
+      this.meta.setTitle(subtitle ? `${title} - ${subtitle}` : title);
+    });
 
     zip(this.route.data, this.route.params)
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(([data, params]) => {
-        if (data.renderFlag === RenderFlag.Create) {
-          this.store$.dispatch(userActions.usrAddOneUser());
-        } else {
-          this.store$.dispatch(userActions.usrGetOneUser(params.id));
-        }
-      });
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe(([data, params]) => {
+      this.deleteCommand = (data.renderFlag === RenderFlag.Delete);
+      if (data.renderFlag === RenderFlag.Create) {
+        this.store$.dispatch(userActions.usrAddOneUser());
+      } else {
+        this.store$.dispatch(userActions.usrGetOneUser(params.id));
+      }
+    });
   }
 
   delete(id: UniqueId): void {
@@ -72,13 +76,26 @@ export class UserDetailContainerComponent extends BaseContainerComponent impleme
     );
   }
 
+  cancel(): void {
+    this.store$.dispatch(rtrActions.rtrGo({
+      router: this.router,
+      route: this.baseRoute
+    }));
+  }
+
   save(resource: any): void {
+    this.store$.pipe(select(AuthSelectors.getUser))
+    .subscribe(user => {
+      resource.domain = user.domain;
+    });
+
     this.route.data.pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       if (res.renderFlag === RenderFlag.Create) {
+        delete resource._id;
         this.store$.dispatch(
           userActions.usrCreateOneUser({
             resource,
-            router: this.router,
+            router: this.router,  
             route: this.baseRoute
           })
         );

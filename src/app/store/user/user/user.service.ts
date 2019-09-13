@@ -13,7 +13,7 @@ import { User } from './user.model';
 export class UserService extends BaseEntityService<User> {
 
   constructor(protected readonly config: ConfigService, protected readonly http: HttpClient) {
-    super(config, http, ['backend', 'admin', 'user']);
+    super(config, http, ['backend', 'admin', 'users']);
   }
 
   getMany$(): Observable<Array<User>> {

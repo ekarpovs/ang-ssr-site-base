@@ -1,26 +1,54 @@
-<form novalidate autocomplete="off" [formGroup]="userForm">
-    <div fxLayout="row" fxLayoutGap="5%">
+<form novalidate autocomplete="off" [formGroup]="form">
+    <div *ngIf="!deleteCommand" fxLayout="column" fxLayoutGap="5%">
         <mat-form-field fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
-            <input matInput maxlength="255" formControlName="name" required
+            <input matInput formControlName="username"
                    [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.NAME' | translate">
+            <mat-error *ngFor="let v of m.username; trackBy: trackByIdFn">
+                <mat-error class="error-message" *ngIf="form.get('username').hasError(v.type) && 
+                    (form.get('username').dirty || form.get('username').touched)">{{ v.message }}
+                </mat-error>
+            </mat-error>                   
         </mat-form-field>
-        <div fxLayout="column" fxLayoutGap="5%" fxFlex="20%"></div>
+        <mat-form-field fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
+            <input matInput formControlName="email"
+                   [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.E-MAIL' | translate">
+            <mat-error *ngFor="let v of m.email; trackBy: trackByIdFn">
+                <mat-error class="error-message" *ngIf="form.get('email').hasError(v.type) && 
+                    (form.get('email').dirty || form.get('email').touched)">{{ v.message }}
+                </mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="!editMode" fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
+            <input matInput formControlName="password"
+                   [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.PASSWORD' | translate">
+            <mat-error *ngFor="let v of m.password; trackBy: trackByIdFn">
+                <mat-error class="error-message" *ngIf="form.get('password').hasError(v.type) && 
+                    (form.get('password').dirty || form.get('password').touched)">{{ v.message }}
+                </mat-error>
+            </mat-error>
+        </mat-form-field>
+    <div fxLayout="column" fxLayoutGap="5%" fxFlex="20%"></div>
     </div>
     <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="24px">
-        <button #delete
-                class="qa-form__button--delete"
-                mat-button
-                color="warn"
+        <button *ngIf="!deleteCommand" #submit
+                mat-raised-button
+                color="accent"
+                [disabled]="form.invalid"
+                (click)="onSave(saveClick)">
+            {{ 'PUBLIC.SHARED.ACTION.SAVE' | translate }}
+        </button>
+        <button *ngIf="deleteCommand" #delete
+                mat-raised-button
+                color="accent"
+                [disabled]="form.invalid"
                 (click)="onDelete(deleteClick)">
             {{ 'PUBLIC.SHARED.ACTION.DELETE' | translate }}
         </button>
-        <button #submit
-                class="qa-form__button--save"
+        <button #cancel
                 mat-raised-button
                 color="accent"
-                [disabled]="userForm.invalid"
-                (click)="onSave(saveClick)">
-            {{ 'PUBLIC.SHARED.ACTION.SAVE' | translate }}
+                (click)="onCancel(cancelClick)">
+            {{ 'PUBLIC.SHARED.ACTION.CANCEL' | translate }}
         </button>
     </div>
 </form>

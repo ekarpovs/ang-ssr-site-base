@@ -6,5 +6,5 @@ export const appRoutePaths = {
   register: 'register',
   home: '',
   about: 'about',
-  users: 'user',
+  users: 'users',
 };

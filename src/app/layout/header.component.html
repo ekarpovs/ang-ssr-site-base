@@ -9,7 +9,7 @@
     <span fxFlex></span>
 
     <span *ngIf="isAuthenticated">
-        <button mat-button [routerLink]="['/', 'user', 'users']">
+        <button mat-button [routerLink]="['/', 'users']">
             {{ 'PUBLIC.USER.USER.MENU_TITLE' | translate }}
         </button>
     </span>
@@ -18,7 +18,7 @@
         {{ 'PUBLIC.ABOUT.ABOUT.MENU_TITLE' | translate }}
     </button>
     <button mat-button [routerLink]="['/', 'about', 'us', 22]">
-        {{ 'PUBLIC.ABOUT.ABOUT_US.MENU_TITLE' | translate }}
+        {{ 'PUBLIC.ABOUT.WHO_ARE_WE.MENU_TITLE' | translate }}
     </button>
     <a mat-button href="https://www.github.com/ekarpovs">
         Github

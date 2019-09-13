@@ -3,10 +3,13 @@ import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { from as observableFrom, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { appRoutePaths } from '~/app/app.routes.paths';
 import { BaseContainerComponent } from '~/app/framework/core';
 import { routeAnimation, Scrollable } from '~/app/shared';
 import { createColumn, createOptions, createRouteButton, DataTable } from '~/app/shared/data-table';
 import { State, User, userActions, UserSelectors } from '~/app/store';
+
+import { userRoutePaths } from '../user.routes.path';
 
 @Component({
   templateUrl: './user.component.html',
@@ -17,6 +20,8 @@ import { State, User, userActions, UserSelectors } from '~/app/store';
 export class UserComponent extends BaseContainerComponent implements OnInit {
   users$: Observable<Array<User>>;
   baseRoute: Array<any>;
+  editRoute: Array<any>;
+  deleteRoute: Array<any>;
   userTable: DataTable;
 
   constructor(private readonly router: Router, protected readonly store$: Store<State>) {
@@ -24,17 +29,19 @@ export class UserComponent extends BaseContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.baseRoute = ['/', 'user', 'users'];
+    this.baseRoute = ['/', appRoutePaths.users];
+    this.editRoute = ['/', appRoutePaths.users, userRoutePaths.edit];
+    this.deleteRoute = ['/', appRoutePaths.users, userRoutePaths.delete];
 
     this.userTable = {
       cols: [
-        createColumn('_id', 'PUBLIC.USER.USER.USER_TABLE.ID_COL_TITLE'),
+        // createColumn('_id', 'PUBLIC.USER.USER.USER_TABLE.ID_COL_TITLE'),
         createColumn('username', 'PUBLIC.USER.USER.USER_TABLE.NAME_COL_TITLE')
       ],
       filterCol: 'username',
       buttons: [
-        createRouteButton('', 'edit', 'PUBLIC.SHARED.ACTION.EDIT', this.baseRoute, '_id'),
-        createRouteButton('', 'delete', 'PUBLIC.SHARED.ACTION.DELETE', this.baseRoute, '_id')
+        createRouteButton('', 'edit', 'PUBLIC.SHARED.ACTION.EDIT', this.editRoute, '_id'),
+        createRouteButton('', 'delete', 'PUBLIC.SHARED.ACTION.DELETE', this.deleteRoute, '_id')
       ],
       options: createOptions('', 'PUBLIC.USER.USER.USER_TABLE.TITLE', Scrollable.Full)
     };
@@ -47,7 +54,7 @@ export class UserComponent extends BaseContainerComponent implements OnInit {
   }
 
   createUser(): void {
-    observableFrom(this.router.navigate([...this.baseRoute, 'create']))
+    observableFrom(this.router.navigate([...this.baseRoute, userRoutePaths.create]))
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(() => {
         /**/

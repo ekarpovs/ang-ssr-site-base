@@ -20,7 +20,7 @@ export class AuthService {
         username: loginCredentials.username,
         password: loginCredentials.password
     };
-    const settingsKey = ['backend', 'auth', 'auth'];
+    const settingsKey = ['backend', 'auth', 'login'];
     const backend = this.config.getSettings(settingsKey);
 
     return this.http.post<any>(backend.endpoint, params).pipe(

@@ -5,6 +5,8 @@ import { UniqueId } from '~/app/framework/ngrx';
 import { getOrNil } from '~/app/shared';
 import { initialUser, User } from '~/app/store';
 
+import { UserValidationService } from './user-validation.service';
+
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
@@ -12,44 +14,77 @@ import { initialUser, User } from '~/app/store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserDetailComponent extends BaseComponent implements OnInit {
-  @ViewChild('delete') deleteRef: ElementRef;
+  @ViewChild('cancel') cancelRef: ElementRef;
   @ViewChild('submit') submitRef: ElementRef;
+  @ViewChild('delete') deleteRef: ElementRef;
+  
   @Input() user: User;
-  @Output() readonly deleteClick: EventEmitter<UniqueId> = new EventEmitter();
-  @Output() readonly saveClick: EventEmitter<User> = new EventEmitter();
-  userForm: FormGroup;
+  @Input() deleteCommand: boolean;
 
-  constructor(private readonly formBuilder: FormBuilder) {
+  @Output() readonly cancelClick: EventEmitter<void> = new EventEmitter();
+  @Output() readonly saveClick: EventEmitter<User> = new EventEmitter();
+  @Output() readonly deleteClick: EventEmitter<UniqueId> = new EventEmitter();
+
+  form: FormGroup;
+  editMode = false;
+
+  // Convenience getter for easy access to form fields 
+  get f(): any {
+    return this.form.controls;
+  }
+
+  // Messages via i18n
+  get m(): any {
+    return this.valSrv.messages;
+  }
+
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly valSrv: UserValidationService) {
     super();
   }
 
   ngOnInit(): void {
     const resource = getOrNil(initialUser)(this.user);
 
-    if (!resource._id) {
-      (this.deleteRef as any).disabled = true;
-    }
-
-    this.userForm = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       _id: resource._id,
-      name: [
-        resource.name,
-        {
-          validators: [Validators.required, Validators.maxLength(255)],
-          updateOn: 'blur'
-        }
+      email: [
+        resource.email,
+        this.valSrv.validators.email
+      ],
+      password: [
+        '',
+        this.valSrv.validators.psssword
+      ],       
+      username: [ 
+        resource.username,
+        this.valSrv.validators.username
       ]
     });
+
+    // Edit mode
+    if (resource._id) {
+      this.form.get('username').disable();
+      this.editMode = true;
+    } 
   }
 
   onDelete(callback: EventEmitter<UniqueId>): void {
-    callback.emit(this.userForm.get('_id').value);
+    callback.emit(this.form.get('_id').value);
+  }
+
+  onCancel(callback: EventEmitter<void>): void {
+    callback.emit();
   }
 
   onSave(callback: EventEmitter<User>): void {
+
     const resource = {
-      _id: this.userForm.get('_id').value,
-      name: this.userForm.get('name').value
+      _id: this.form.get('_id').value,
+      email: this.form.get('email').value,
+      password: this.form.get('password').value,  
+      username: this.form.get('username').value
     };
 
     callback.emit(resource);

@@ -17,8 +17,8 @@ export const routes = [
     component: AboutUsComponent,
     data: {
       meta: {
-        title: 'PUBLIC.ABOUT.ABOUT_US.PAGE_TITLE',
-        description: 'PUBLIC.ABOUT.ABOUT_US.META_DESCRIPTION'
+        title: 'PUBLIC.ABOUT.WHO_ARE_WE.PAGE_TITLE',
+        description: 'PUBLIC.ABOUT.WHO_ARE_WE.META_DESCRIPTION'
       }
     }
   }

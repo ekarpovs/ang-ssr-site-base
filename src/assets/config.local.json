@@ -47,13 +47,16 @@
     "baseAuthUrl": "http://localhost:3005/auth",
     "baseApiUrl": "http://localhost:3005/api",
     "auth": {
-      "auth": {
+      "login": {
         "endpoint": "{baseAuthUrl}/login"
+      },
+      "logout": {
+        "endpoint": "{baseAuthUrl}/logout"
       }
     },
     "admin": {
-      "user": {
-        "endpoint": "{baseApiUrl}/user"
+      "users": {
+        "endpoint": "{baseApiUrl}/users"
       }
     }
   }
