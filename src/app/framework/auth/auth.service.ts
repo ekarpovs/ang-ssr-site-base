@@ -42,7 +42,7 @@ export class AuthService {
       username: registerCredentials.username,
       password: registerCredentials.password
     };
-    const settingsKey = ['backend', 'admin', 'user'];
+    const settingsKey = ['backend', 'admin', 'users'];
     const backend = this.config.getSettings(settingsKey);
 
     return this.http.post<any>(backend.endpoint, params).pipe(
