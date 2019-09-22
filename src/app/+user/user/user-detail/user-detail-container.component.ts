@@ -22,7 +22,7 @@ import { AuthSelectors , State, User, userActions, UserSelectors} from '~/app/st
 export class UserDetailContainerComponent extends BaseContainerComponent implements OnInit {
   user$: Observable<User>;
   baseRoute: Array<string>;
-  deleteCommand = false;
+  mode: string;
 
   constructor(
     private readonly router: Router,
@@ -54,11 +54,11 @@ export class UserDetailContainerComponent extends BaseContainerComponent impleme
       this.meta.setTitle(subtitle ? `${title} - ${subtitle}` : title);
     });
 
-    zip(this.route.data, this.route.params)
+    zip(this.route.url, this.route.params)
     .pipe(takeUntil(this.ngUnsubscribe))
-    .subscribe(([data, params]) => {
-      this.deleteCommand = (data.renderFlag === RenderFlag.Delete);
-      if (data.renderFlag === RenderFlag.Create) {
+    .subscribe(([url, params]) => {
+      this.mode = url[0].path;
+      if (this.mode === 'create') {
         this.store$.dispatch(userActions.usrAddOneUser());
       } else {
         this.store$.dispatch(userActions.usrGetOneUser(params.id));
@@ -89,8 +89,7 @@ export class UserDetailContainerComponent extends BaseContainerComponent impleme
       resource.domain = user.domain;
     });
 
-    this.route.data.pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
-      if (res.renderFlag === RenderFlag.Create) {
+      if (this.mode === 'create') {
         delete resource._id;
         this.store$.dispatch(
           userActions.usrCreateOneUser({
@@ -108,6 +107,5 @@ export class UserDetailContainerComponent extends BaseContainerComponent impleme
           })
         );
       }
-    });
   }
 }

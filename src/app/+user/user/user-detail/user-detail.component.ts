@@ -19,14 +19,13 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
   @ViewChild('delete') deleteRef: ElementRef;
   
   @Input() user: User;
-  @Input() deleteCommand: boolean;
+  @Input() mode: string;
 
   @Output() readonly cancelClick: EventEmitter<void> = new EventEmitter();
   @Output() readonly saveClick: EventEmitter<User> = new EventEmitter();
   @Output() readonly deleteClick: EventEmitter<UniqueId> = new EventEmitter();
 
   form: FormGroup;
-  editMode = false;
 
   // Convenience getter for easy access to form fields 
   get f(): any {
@@ -63,10 +62,9 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
       ]
     });
 
-    // Edit mode
-    if (resource._id) {
+    if (this.mode === 'edit') {
       this.form.get('username').disable();
-      this.editMode = true;
+      this.form.get('password').clearValidators();
     } 
   }
 
@@ -80,11 +78,15 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
 
   onSave(callback: EventEmitter<User>): void {
 
+    // const resource = {
+    //   _id: this.form.get('_id').value,
+    //   email: this.form.get('email').value,
+    //   password: this.form.get('password').value,  
+    //   username: this.form.get('username').value
+    // };
     const resource = {
-      _id: this.form.get('_id').value,
-      email: this.form.get('email').value,
-      password: this.form.get('password').value,  
-      username: this.form.get('username').value
+      ...this.user,
+      ...this.form.value
     };
 
     callback.emit(resource);

@@ -1,5 +1,5 @@
 <form novalidate autocomplete="off" [formGroup]="form">
-    <div *ngIf="!deleteCommand" fxLayout="column" fxLayoutGap="5%">
+    <div *ngIf="mode!=='delete'" fxLayout="column" fxLayoutGap="5%">
         <mat-form-field fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
             <input matInput formControlName="username"
                    [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.NAME' | translate">
@@ -18,7 +18,7 @@
                 </mat-error>
             </mat-error>
         </mat-form-field>
-        <mat-form-field *ngIf="!editMode" fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
+        <mat-form-field *ngIf="mode==='create'" fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
             <input matInput formControlName="password"
                    [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.PASSWORD' | translate">
             <mat-error *ngFor="let v of m.password; trackBy: trackByIdFn">
@@ -30,14 +30,14 @@
     <div fxLayout="column" fxLayoutGap="5%" fxFlex="20%"></div>
     </div>
     <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="24px">
-        <button *ngIf="!deleteCommand" #submit
+        <button *ngIf="mode!=='delete'" #submit
                 mat-raised-button
                 color="accent"
                 [disabled]="form.invalid"
                 (click)="onSave(saveClick)">
             {{ 'PUBLIC.SHARED.ACTION.SAVE' | translate }}
         </button>
-        <button *ngIf="deleteCommand" #delete
+        <button *ngIf="mode==='delete'" #delete
                 mat-raised-button
                 color="accent"
                 [disabled]="form.invalid"

@@ -7,7 +7,7 @@
         [isProcessing]="isProcessing$ | async">
         <app-user-detail *ngIf="!(isProcessing$ | async)"
             [user]="user$ | async"
-            [deleteCommand]="deleteCommand"
+            [mode]="mode"
             (cancelClick)="cancel($event)"
             (deleteClick)="delete($event)"
             (saveClick)="save($event)">
