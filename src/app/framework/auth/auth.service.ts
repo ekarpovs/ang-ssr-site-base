@@ -39,6 +39,7 @@ export class AuthService {
     const params = {
       firstname: registerCredentials.firstName,
       lastname: registerCredentials.lastName,
+      email: registerCredentials.email,
       username: registerCredentials.username,
       password: registerCredentials.password
     };

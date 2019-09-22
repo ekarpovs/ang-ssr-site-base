@@ -75,6 +75,13 @@ export class RegisterComponent implements OnInit {
                     //                     //     Validators.maxLength(ValidationUtil.VALIDATION_RULE.FIRST_NAME.MAX_LENGTH)
                     // ]
                 ],
+                email: [
+                    'user00@g.com'
+                    // [
+                    //     Validators.required,
+                    //     Validators.email
+                    // ]
+                ],
                 username: [
                     'user00'
                     // [
@@ -104,6 +111,7 @@ export class RegisterComponent implements OnInit {
         return {
             firstName: FormUtil.getFormFieldValue(this.registerForm, "firstName"),
             lastName: FormUtil.getFormFieldValue(this.registerForm, "lastName"),
+            email: FormUtil.getFormFieldValue(this.registerForm, "email"),
             username: FormUtil.getFormFieldValue(this.registerForm, "username"),
             password: FormUtil.getFormFieldValue(this.registerForm, "password")
         };
