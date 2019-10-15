@@ -39,30 +39,12 @@ export class UserDetailContainerComponent extends BaseContainerComponent impleme
 
     this.isProcessing$ = this.store$.pipe(select(UserSelectors.getIsProcessing));
     this.error$ = this.store$.pipe(select(UserSelectors.getError));
-    this.user$ = this.store$.pipe(select(UserSelectors.getSelected));
-
-    this.user$
-    .pipe(
-      skipWhile(isNil),
-      switchMap(res => zip(this.route.data, observableOf(res))),
-      switchMap(([data, user]) => zip(this.translate.get(data.meta.title), observableOf(user))),
-      takeUntil(this.ngUnsubscribe)
-    )
-    .subscribe(([title, user]: Array<any>) => {
-      const subtitle = getOr('')('username')(user);
-
-      this.meta.setTitle(subtitle ? `${title} - ${subtitle}` : title);
-    });
 
     zip(this.route.url, this.route.params)
     .pipe(takeUntil(this.ngUnsubscribe))
     .subscribe(([url, params]) => {
       this.mode = url[0].path;
-      if (this.mode === 'create') {
-        this.store$.dispatch(userActions.usrAddOneUser());
-      } else {
-        this.store$.dispatch(userActions.usrGetOneUser(params.id));
-      }
+      this.user$ = this.store$.pipe(select(UserSelectors.getById(params.id)))
     });
   }
 

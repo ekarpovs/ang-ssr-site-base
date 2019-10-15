@@ -58,7 +58,6 @@
         <button *ngIf="mode==='delete'" #delete
                 mat-raised-button
                 color="accent"
-                [disabled]="form.invalid"
                 (click)="onDelete(deleteClick)">
             {{ 'PUBLIC.SHARED.ACTION.DELETE' | translate }}
         </button>

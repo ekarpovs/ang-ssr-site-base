@@ -1,24 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
+import { select, Store } from '@ngrx/store';
 import { flow, get, isEmpty, isNil, negate } from 'lodash/fp';
 import { of as observableOf } from 'rxjs';
-import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, filter, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { EMPTY_UNIQUE_ID } from '~/app/framework/ngrx';
 import { ERROR__NO_PAYLOAD } from '~/app/shared';
 
 import { userActions } from './user.actions';
+import { getMany } from './user.selectors';
 import { UserService } from './user.service';
+import { State } from './user.state';
 
 @Injectable()
 export class UserEffects {
   @Effect() getMany$ = this.actions$.pipe(
     filter(userActions.is.usrGetManyUsers),
-    switchMap(() =>
-      this.user.getMany$().pipe(
+    withLatestFrom(this.store$.pipe(select(getMany))),
+    switchMap(([,users]) => {
+      if(users.length !== 0) { 
+        return observableOf(users).pipe(map(userActions.usrGetManyUsersSuccess))
+      }
+      
+      return this.user.getMany$().pipe(
         map(userActions.usrGetManyUsersSuccess),
-        catchError(error => observableOf(userActions.usrGetManyUsersFail(error.message)))
+        catchError(error => observableOf(userActions.usrGetManyUsersFail(error.error)))
       )
-    )
+    })
   );
 
   @Effect() getOne$ = this.actions$.pipe(
@@ -118,5 +126,5 @@ export class UserEffects {
     )
   );
 
-  constructor(private readonly actions$: Actions, private readonly user: UserService) {}
+  constructor(protected store$: Store<State>, private readonly actions$: Actions, private readonly user: UserService) {}
 }

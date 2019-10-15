@@ -2,10 +2,11 @@ import { BaseDocument, UniqueId } from './models/base-document';
 
 export const entityStartProcessingFn = <T>(state: T) => ({
   ...(state as any),
-  ids: [],
-  entities: {},
+  // ids: [],
+  // entities: {},
   isProcessing: true,
-  selectedId: undefined
+  selectedId: undefined,
+  error: undefined
 });
 
 export const entityStopProcessingFn = <T>(state: T) => ({

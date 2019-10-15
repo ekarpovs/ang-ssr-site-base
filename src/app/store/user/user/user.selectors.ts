@@ -25,4 +25,9 @@ export const getSelected = createSelector(
   (entities, id) => !isNil(id) && entities[id]
 );
 
+export const getById = (id: any) => createSelector(
+  get(`${USER}.entities`),
+  entities => !isNil(id) && entities[id]
+);
+
 export { selectAll as getMany };

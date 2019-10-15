@@ -35,18 +35,13 @@ export function reducer(state: State = initialState, action: UserAction): State 
 
     usrCreateOneUser: () => entityStartProcessingFn<State>(state),
     usrCreateOneUserSuccess: (user: User) =>
-      adapter.updateOne(
-        {
-          id: EMPTY_UNIQUE_ID,
-          changes: user
-        },
-        {
+      adapter.addOne(user, {
           ...entityStopProcessingFn<State>(state),
-          selectedId: undefined
+          selectedId: user._id
         }
       ),
     usrCreateOneUserFail: entityResetFn<State>(state),
-
+  
     usrUpdateOneUser: () => entityStartProcessingFn<State>(state),
     usrUpdateOneUserSuccess: (user: User) =>
       adapter.updateOne(
@@ -56,7 +51,7 @@ export function reducer(state: State = initialState, action: UserAction): State 
         },
         {
           ...entityStopProcessingFn<State>(state),
-          selectedId: undefined
+          selectedId: user._id
         }
       ),
       usrUpdateOneUserFail: entityResetFn<State>(state),
@@ -67,7 +62,8 @@ export function reducer(state: State = initialState, action: UserAction): State 
         ...entityStopProcessingFn<State>(state),
         selectedId: undefined
       }),
-      usrDeleteOneUserFail: entityResetFn<State>(state),
+    usrDeleteOneUserFail: entityResetFn<State>(state),
+
     default: () => state
   })(action);
 }
