@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { LoginCredentials } from '~/app/framework/auth/models/auth.model';
 import * as FormUtil from '~/app/framework/util/form.util';
 
+import { LoginValidationService } from './login-validation.service';
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -45,12 +47,18 @@ export class LoginComponent implements OnInit {
     /**
      * Reference to the login form.
      */
-    loginForm: FormGroup;
+    form: FormGroup;
+
+    // Messages via i18n
+    get m(): any {
+        return this.valSrv.messages;
+    }
 
     /**
      * Constructor
      */
-    constructor(private readonly formBuilder: FormBuilder) {
+    constructor(private readonly formBuilder: FormBuilder,
+        private readonly valSrv: LoginValidationService) {
     }
 
     /**
@@ -59,46 +67,25 @@ export class LoginComponent implements OnInit {
      * TODO: BMR: 01/10/2019: Add form validation in a future post.
      */
     ngOnInit(): void {
-        this.loginForm = new FormGroup(
-            this.formBuilder.group({
-                username: [
-                    'user00'
-                    // [
-                    //     Validators.required,
-                    //     Validators.email
-                    // ]
-                ],
-                password: [
-                    'Us123456'
-                    // [
-                    //     Validators.required,
-                    //     Validators.maxLength(ValidationUtil.VALIDATION_RULE.PASSWORD.MAX_LENGTH)
-                    // ]
-                ]
-            }).controls,
-            {
-                updateOn: 'blur'
-            }
-        );
+        this.form = this.formBuilder.group({
+            username: [
+                'user00',
+                this.valSrv.validators.username
+            ],
+            password: [
+                'Us123456',
+                this.valSrv.validators.psssword
+            ]
+        });
     }
 
-    /**
-     * Accessor for the form's value, aka the data container object representing the
-     * form field's current values.
-     */
-    getFormValue(): LoginCredentials {
-        return {
-            username: FormUtil.getFormFieldValue(this.loginForm, 'username'),
-            password: FormUtil.getFormFieldValue(this.loginForm, 'password')
-        };
-    }
 
     /**
      * Handles the form submission and emits a login event with the user's credentials.
      * event
      */
     onLogin(event: any): void {
-        const payload: LoginCredentials = this.getFormValue();
+        const payload: LoginCredentials = {...this.form.value };
         this.login.emit(payload);
     }
 
