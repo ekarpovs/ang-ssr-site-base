@@ -1,2 +1,2 @@
 // HTTP client
-export const HTTP_CLIENT__MAX_RETRIES = 3;
+export const HTTP_CLIENT__MAX_RETRIES = 1;
