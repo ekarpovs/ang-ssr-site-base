@@ -50,7 +50,7 @@ export abstract class BaseEntityService<T extends BaseDocument> {
   updateOne$(resource: T): Observable<T> {
     const backend = this.config.getSettings(this.settingsKey);
 
-    return this.http.patch<T>(`${backend.endpoint}/${resource._id}`, resource).pipe(retry(HTTP_CLIENT__MAX_RETRIES));
+    return this.http.put<T>(`${backend.endpoint}/${resource._id}`, resource).pipe(retry(HTTP_CLIENT__MAX_RETRIES));
   }
 
   deleteMany$(ids: Array<UniqueId>): Observable<Array<UniqueId>> {
