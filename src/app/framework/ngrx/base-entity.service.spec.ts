@@ -155,7 +155,7 @@ t.describe('BaseEntityService', () => {
 
         http
           .expectOne({
-            method: 'PATCH',
+            method: 'PUT',
             url: `{baseUrl}/test/${MOCK_ITEM._id}`
           })
           .flush(MOCK_ITEM);
