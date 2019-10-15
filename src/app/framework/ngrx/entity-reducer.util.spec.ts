@@ -13,10 +13,9 @@ t.describe('entityStartProcessingFn', () => {
     const actual = entityStartProcessingFn(preState);
     const expected: MOCK_TYPE = {
       ...preState,
-      ids: [],
-      entities: {},
       isProcessing: true,
-      selectedId: undefined
+      selectedId: undefined,
+      error: undefined,
     };
 
     t.e(actual).toEqual(expected);
