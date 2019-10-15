@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { RegisterCredentials } from '~/app/framework/auth/models/auth.model';
 import * as FormUtil from '~/app/framework/util/form.util';
 
+import { RegisterValidationService } from './register-validation.service';
+
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
@@ -45,12 +47,18 @@ export class RegisterComponent implements OnInit {
     /**
      * Reference to the login form.
      */
-    registerForm: FormGroup;
+    form: FormGroup;
+
+    // Messages via i18n
+    get m(): any {
+        return this.valSrv.messages;
+    }
 
     /**
      * Constructor
      */
-    constructor(private readonly formBuilder: FormBuilder) {
+    constructor(private readonly formBuilder: FormBuilder,
+        private readonly valSrv: RegisterValidationService) {
     }
 
     /**
@@ -59,62 +67,28 @@ export class RegisterComponent implements OnInit {
      * TODO: BMR: 01/10/2019: Add form validation in a future post.
      */
     ngOnInit(): void {
-        this.registerForm = new FormGroup(
-            this.formBuilder.group({
-                firstName: [
-                    "Fn00"
-                    // [
-                    //     Validators.required,
-                    //     Validators.maxLength(ValidationUtil.VALIDATION_RULE.FIRST_NAME.MAX_LENGTH)
-                    // ]
-                ],
-                lastName: [
-                    "Ln00"
-                    // [
-                    //     Validators.required,
-                    //                     //     Validators.maxLength(ValidationUtil.VALIDATION_RULE.FIRST_NAME.MAX_LENGTH)
-                    // ]
-                ],
-                email: [
-                    'user00@g.com'
-                    // [
-                    //     Validators.required,
-                    //     Validators.email
-                    // ]
-                ],
-                username: [
-                    'user00'
-                    // [
-                    //     Validators.required,
-                    //     Validators.email
-                    // ]
-                ],
-                password: [
-                    'Us123456'
-                    // [
-                    //     Validators.required,
-                    //     Validators.maxLength(ValidationUtil.VALIDATION_RULE.PASSWORD.MAX_LENGTH)
-                    // ]
-                ]
-            }).controls,
-            {
-                updateOn: 'blur'
-            }
-        );
-    }
-
-    /**
-     * Accessor for the form's value, aka the data container object representing the
-     * form field's current values.
-     */
-    getFormValue(): RegisterCredentials {
-        return {
-            firstName: FormUtil.getFormFieldValue(this.registerForm, "firstName"),
-            lastName: FormUtil.getFormFieldValue(this.registerForm, "lastName"),
-            email: FormUtil.getFormFieldValue(this.registerForm, "email"),
-            username: FormUtil.getFormFieldValue(this.registerForm, "username"),
-            password: FormUtil.getFormFieldValue(this.registerForm, "password")
-        };
+        this.form = this.formBuilder.group({
+            firstname: [
+                'Fn000',
+                this.valSrv.validators.firstname
+            ],
+            lastname: [
+                'Ln000',
+                this.valSrv.validators.lastname
+            ],
+            username: [
+                'user00',
+                this.valSrv.validators.username
+            ],
+            email: [
+                'user00@g.com',
+                this.valSrv.validators.email
+            ],
+            password: [
+                'Us123456',
+                this.valSrv.validators.psssword
+            ]
+        });
     }
 
     /**
@@ -122,8 +96,16 @@ export class RegisterComponent implements OnInit {
      * event
      */
     onRegister(event: any): void {
-        const payload: RegisterCredentials = this.getFormValue();
+        const payload: RegisterCredentials = { ...this.form.value };
         this.register.emit(payload);
+    }
+
+    /**
+     * Emits an event to route the user to the login view.
+     * event
+     */
+    onLogin(event: any): void {
+        this.login.emit();
     }
 
     /**

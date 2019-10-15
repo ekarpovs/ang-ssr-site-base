@@ -55,6 +55,15 @@ export class RegisterContainerComponent implements OnInit {
     }
 
     /**
+     * Switch to login view.
+     */
+    login(event: any): void {      
+        this.store$.dispatch(authActions.authNavigateToLogin({
+            router: this.router
+        }));
+    } 
+
+    /**
      * Switch to register view.
      */
 

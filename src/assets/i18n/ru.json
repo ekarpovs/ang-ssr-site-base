@@ -34,7 +34,10 @@
     "REGISTER": {
       "PAGE_TITLE": "Регистрация",
       "META_DESCRIPTION": "",
+      "FIRST_NAME": "Имя",
+      "LAST_NAME": "Фамилие",
       "USERNAME": "Имя пользователя",
+      "E-MAIL": "Эл. почта",
       "PASSWORD": "Пароль",
       "REGISTER": "Регистрация",
       "GO_TO_LOGIN": "Вход",
