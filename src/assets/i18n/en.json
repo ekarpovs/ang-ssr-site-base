@@ -68,12 +68,16 @@
           "ID_COL_TITLE": "ID",
           "ACCESS_COL_TITLE": "Access",
           "LOCKED_COL_TITLE": "Locked",
+          "FIRST_NAME_COL_TITLE": "First name",
+          "LAST_NAME_COL_TITLE": "Last name",
           "NAME_COL_TITLE": "User name",
           "CREATE": "Create a new user"
         },
         "USER_DETAIL": {
           "MENU_TITLE": "User",
           "PAGE_TITLE": "User",
+          "FIRST_NAME": "First name",
+          "LAST_NAME": "Last name",
           "NAME": "User name",
           "E-MAIL": "E-mail",
           "PASSWORD": "Password"

@@ -14,6 +14,20 @@ const EMAIL_MAX_LENGTH = 255;
 export class UserValidationService {
 // Messages via i18n
 messages = {
+  firstname: [
+    { type: 'required', message: 'First name is required' },
+    { type: 'minlength', message: `First name must be at least ${USER_NAME_MIN_LENGTH} characters long` },
+    { type: 'maxlength', message: `First name cannot be more than ${USER_NAME_MAX_LENGTH} characters long` },
+    { type: 'pattern', message: 'First name must contain only letters' },
+    { type: 'pattern', message: 'Enter a valid first name' }
+  ],
+  lastname: [
+    { type: 'required', message: 'User name is required' },
+    { type: 'minlength', message: `User name must be at least ${USER_NAME_MIN_LENGTH} characters long` },
+    { type: 'maxlength', message: `User name cannot be more than ${USER_NAME_MAX_LENGTH} characters long` },
+    { type: 'pattern', message: 'User name must contain only numbers and letters' },
+    { type: 'pattern', message: 'Enter a valid user name' }
+  ],
   username: [
     { type: 'required', message: 'User name is required' },
     { type: 'minlength', message: `User name must be at least ${USER_NAME_MIN_LENGTH} characters long` },
@@ -35,6 +49,16 @@ messages = {
 }; 
 
 validators = {
+  firstname: Validators.compose([
+    Validators.required,
+    Validators.minLength(USER_NAME_MIN_LENGTH),
+    Validators.maxLength(USER_NAME_MAX_LENGTH)
+  ]),
+  lastname: Validators.compose([
+    Validators.required,
+    Validators.minLength(USER_NAME_MIN_LENGTH),
+    Validators.maxLength(USER_NAME_MAX_LENGTH)
+  ]),
   username: Validators.compose([
     Validators.required,
     Validators.minLength(USER_NAME_MIN_LENGTH),

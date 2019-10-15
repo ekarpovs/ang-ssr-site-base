@@ -1,6 +1,24 @@
 <form novalidate autocomplete="off" [formGroup]="form">
     <div *ngIf="mode!=='delete'" fxLayout="column" fxLayoutGap="5%">
         <mat-form-field fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
+            <input matInput formControlName="firstname"
+                   [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.FIRST_NAME' | translate">
+            <mat-error *ngFor="let v of m.firstname; trackBy: trackByIdFn">
+                <mat-error class="error-message" *ngIf="form.get('firstname').hasError(v.type) && 
+                    (form.get('firstname').dirty || form.get('firstname').touched)">{{ v.message }}
+                </mat-error>
+            </mat-error>                   
+        </mat-form-field>
+        <mat-form-field fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
+            <input matInput formControlName="lastname"
+                   [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.LAST_NAME' | translate">
+            <mat-error *ngFor="let v of m.lastname; trackBy: trackByIdFn">
+                <mat-error class="error-message" *ngIf="form.get('lastname').hasError(v.type) && 
+                    (form.get('lastname').dirty || form.get('lastname').touched)">{{ v.message }}
+                </mat-error>
+            </mat-error>                   
+        </mat-form-field>
+        <mat-form-field fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
             <input matInput formControlName="username"
                    [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.NAME' | translate">
             <mat-error *ngFor="let v of m.username; trackBy: trackByIdFn">

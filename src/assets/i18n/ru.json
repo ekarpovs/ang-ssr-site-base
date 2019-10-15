@@ -67,12 +67,16 @@
           "ID_COL_TITLE": "ID",
           "ACCESS_COL_TITLE": "Дооступ",
           "LOCKED_COL_TITLE": "Блокирован",
+          "FIRST_NAME_COL_TITLE": "Имя",
+          "LAST_NAME_COL_TITLE": "Фамилие",
           "NAME_COL_TITLE": "Имя пользователя",
           "CREATE": "Добавить"
         },
         "USER_DETAIL": {
           "MENU_TITLE": "Пользователь",
           "PAGE_TITLE": "Пользователь",
+          "FIRST_NAME": "Имя",
+          "LAST_NAME": "Фамилие",
           "NAME": "Имя пользователя",
           "E-MAIL": "Эл. почта",
           "PASSWORD": "Пароль"

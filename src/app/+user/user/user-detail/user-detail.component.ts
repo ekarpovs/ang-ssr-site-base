@@ -48,6 +48,14 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       _id: resource._id,
+      firstname: [
+        resource.firstname,
+        this.valSrv.validators.firstname
+      ],
+      lastname: [
+        resource.lastname,
+        this.valSrv.validators.lastname
+      ],
       email: [
         resource.email,
         this.valSrv.validators.email
@@ -78,12 +86,6 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
 
   onSave(callback: EventEmitter<User>): void {
 
-    // const resource = {
-    //   _id: this.form.get('_id').value,
-    //   email: this.form.get('email').value,
-    //   password: this.form.get('password').value,  
-    //   username: this.form.get('username').value
-    // };
     const resource = {
       ...this.user,
       ...this.form.value

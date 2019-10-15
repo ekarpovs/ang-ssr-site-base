@@ -5,6 +5,8 @@ export { User };
 
 export const initialUser: User = {
   _id: EMPTY_UNIQUE_ID,
+  firstname: '',
+  lastname: '',
   email: '',
   password: '',
   username: ''

@@ -84,11 +84,6 @@ export class UserDetailContainerComponent extends BaseContainerComponent impleme
   }
 
   save(resource: any): void {
-    this.store$.pipe(select(AuthSelectors.getUser))
-    .subscribe(user => {
-      resource.domain = user.domain;
-    });
-
       if (this.mode === 'create') {
         delete resource._id;
         this.store$.dispatch(
