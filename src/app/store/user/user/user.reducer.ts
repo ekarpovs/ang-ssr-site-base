@@ -15,35 +15,35 @@ import { adapter, initialState, State } from './user.state';
 // tslint:disable-next-line
 export function reducer(state: State = initialState, action: UserAction): State {
   return userActions.match({
-    usrGetManyUsers: () => entityStartProcessingFn<State>(state),
-    usrGetManyUsersSuccess: (users: Array<User>) => adapter.addAll(users, entityStopProcessingFn<State>(state)),
-    usrGetManyUsersFail: entityErrorFn<State>(state),
+    getMany: () => entityStartProcessingFn<State>(state),
+    getManySuccess: (users: Array<User>) => adapter.addAll(users, entityStopProcessingFn<State>(state)),
+    getManyFail: entityErrorFn<State>(state),
     
-    usrGetOneUser : () => entityStartProcessingFn<State>(state),
-    usrGetOneUserSuccess: (user: User) =>
+    getOne : () => entityStartProcessingFn<State>(state),
+    getOneSuccess: (user: User) =>
       adapter.addOne(user, {
         ...entityStopProcessingFn<State>(state),
         selectedId: user._id
       }),
-      usrGetOneUserFail: entityErrorFn<State>(state),
+      getOneFail: entityErrorFn<State>(state),
 
-    usrAddOneUser : () =>
+      addOne : () =>
       adapter.addOne(initialUser, {
         ...entityStopProcessingFn<State>(state),
         selectedId: EMPTY_UNIQUE_ID
       }),
 
-    usrCreateOneUser: () => entityStartProcessingFn<State>(state),
-    usrCreateOneUserSuccess: (user: User) =>
+      createOne: () => entityStartProcessingFn<State>(state),
+      createOneSuccess: (user: User) =>
       adapter.addOne(user, {
           ...entityStopProcessingFn<State>(state),
           selectedId: user._id
         }
       ),
-    usrCreateOneUserFail: entityResetFn<State>(state),
+      createOneFail: entityResetFn<State>(state),
   
-    usrUpdateOneUser: () => entityStartProcessingFn<State>(state),
-    usrUpdateOneUserSuccess: (user: User) =>
+      updateOne: () => entityStartProcessingFn<State>(state),
+      updateOneSuccess: (user: User) =>
       adapter.updateOne(
         {
           id: user._id,
@@ -54,15 +54,15 @@ export function reducer(state: State = initialState, action: UserAction): State 
           selectedId: user._id
         }
       ),
-      usrUpdateOneUserFail: entityResetFn<State>(state),
+      updateOneFail: entityResetFn<State>(state),
 
-    usrDeleteOneUser: () => entityStartProcessingFn<State>(state),
-    usrDeleteOneUserSuccess: (id: UniqueId) =>
+      deleteOne: () => entityStartProcessingFn<State>(state),
+      deleteOneSuccess: (id: UniqueId) =>
       adapter.removeOne(id, {
         ...entityStopProcessingFn<State>(state),
         selectedId: undefined
       }),
-    usrDeleteOneUserFail: entityResetFn<State>(state),
+      deleteOneFail: entityResetFn<State>(state),
 
     default: () => state
   })(action);

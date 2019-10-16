@@ -50,7 +50,7 @@ export class UserDetailContainerComponent extends BaseContainerComponent impleme
 
   delete(id: UniqueId): void {
     this.store$.dispatch(
-      userActions.usrDeleteOneUser({
+      userActions.deleteOne({
         id,
         router: this.router,
         route: this.baseRoute
@@ -69,7 +69,7 @@ export class UserDetailContainerComponent extends BaseContainerComponent impleme
       if (this.mode === 'create') {
         delete resource._id;
         this.store$.dispatch(
-          userActions.usrCreateOneUser({
+          userActions.createOne({
             resource,
             router: this.router,  
             route: this.baseRoute
@@ -77,7 +77,7 @@ export class UserDetailContainerComponent extends BaseContainerComponent impleme
         );
       } else {
         this.store$.dispatch(
-          userActions.usrUpdateOneUser({
+          userActions.updateOne({
             resource,
             router: this.router,
             route: this.baseRoute

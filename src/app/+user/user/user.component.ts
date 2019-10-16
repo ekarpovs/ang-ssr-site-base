@@ -19,9 +19,9 @@ import { userRoutePaths } from '../user.routes.path';
 })
 export class UserComponent extends BaseContainerComponent implements OnInit {
   users$: Observable<Array<User>>;
-  baseRoute: Array<any>;
-  editRoute: Array<any>;
-  deleteRoute: Array<any>;
+  baseRoute: Array<string>;
+  editRoute: Array<string>;
+  deleteRoute: Array<string>;
   userTable: DataTable;
 
   constructor(private readonly router: Router, protected readonly store$: Store<State>) {
@@ -50,7 +50,7 @@ export class UserComponent extends BaseContainerComponent implements OnInit {
     this.error$ = this.store$.pipe(select(UserSelectors.getError));
     this.users$ = this.store$.pipe(select(UserSelectors.getMany));
 
-    this.store$.dispatch(userActions.usrGetManyUsers());
+    this.store$.dispatch(userActions.getMany());
   }
 
   createUser(): void {
@@ -62,6 +62,6 @@ export class UserComponent extends BaseContainerComponent implements OnInit {
   }
 
   refresh(): void {
-    this.store$.dispatch(userActions.usrGetManyUsers());
+    this.store$.dispatch(userActions.getMany());
   }
 }
