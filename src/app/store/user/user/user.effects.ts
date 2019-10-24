@@ -14,7 +14,7 @@ import { State } from './user.state';
 
 @Injectable()
 export class UserEffects {
-  @Effect() usrGetMany$ = this.actions$.pipe(
+  @Effect() getMany$ = this.actions$.pipe(
     filter(userActions.is.usrGetMany),
     withLatestFrom(this.store$.pipe(select(getMany))),
     switchMap(([,users]) => {
@@ -29,7 +29,7 @@ export class UserEffects {
     })
   );
 
-  @Effect() usrGetOne$ = this.actions$.pipe(
+  @Effect() getOne$ = this.actions$.pipe(
     filter(userActions.is.usrGetOne),
     map(get('payload')),
     switchMap(payload =>
@@ -42,7 +42,7 @@ export class UserEffects {
     )
   );
 
-  @Effect() usrCreateOne$ = this.actions$.pipe(
+  @Effect() createOne$ = this.actions$.pipe(
     filter(userActions.is.usrCreateOne),
     map(get('payload')),
     switchMap(payload =>
@@ -71,7 +71,7 @@ export class UserEffects {
     )
   );
 
-  @Effect() usrUpdateOne$ = this.actions$.pipe(
+  @Effect() updateOne$ = this.actions$.pipe(
     filter(userActions.is.usrUpdateOne),
     map(get('payload')),
     switchMap(payload =>
@@ -100,7 +100,7 @@ export class UserEffects {
     )
   );
 
-  @Effect() usrDeleteOne$ = this.actions$.pipe(
+  @Effect() deleteOne$ = this.actions$.pipe(
     filter(userActions.is.usrDeleteOne),
     map(get('payload')),
     switchMap(payload =>
