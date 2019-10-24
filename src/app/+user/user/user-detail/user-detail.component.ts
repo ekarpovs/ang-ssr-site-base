@@ -14,9 +14,6 @@ import { UserValidationService } from './user-validation.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserDetailComponent extends BaseComponent implements OnInit {
-  @ViewChild('cancel') cancelRef: ElementRef;
-  @ViewChild('submit') submitRef: ElementRef;
-  @ViewChild('delete') deleteRef: ElementRef;
   
   @Input() user: User;
   @Input() mode: string;
