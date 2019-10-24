@@ -50,7 +50,7 @@ export class UserComponent extends BaseContainerComponent implements OnInit {
     this.error$ = this.store$.pipe(select(UserSelectors.getError));
     this.users$ = this.store$.pipe(select(UserSelectors.getMany));
 
-    this.store$.dispatch(userActions.getMany());
+    this.store$.dispatch(userActions.usrGetMany());
   }
 
   createUser(): void {
@@ -62,6 +62,6 @@ export class UserComponent extends BaseContainerComponent implements OnInit {
   }
 
   refresh(): void {
-    this.store$.dispatch(userActions.getMany());
+    this.store$.dispatch(userActions.usrGetMany());
   }
 }

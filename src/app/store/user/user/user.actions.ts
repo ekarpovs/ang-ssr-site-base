@@ -6,22 +6,22 @@ import { User } from './user.model';
 
 export const userActions = unionize(
   {
-    getMany: {},
-    getManySuccess: ofType<Array<User>>(),
-    getManyFail: ofType<string>(),
-    getOne: ofType<UniqueId>(),
-    getOneSuccess: ofType<User>(),
-    getOneFail: ofType<string>(),
-    addOne: {},
-    createOne: ofType<{ resource: User; router: Router; route: Array<string> }>(),
-    createOneSuccess: ofType<User>(),
-    createOneFail: ofType<{ id: UniqueId; error: string }>(),
-    updateOne: ofType<{ resource: User; router: Router; route: Array<string> }>(),
-    updateOneSuccess: ofType<User>(),
-    updateOneFail: ofType<{ id: UniqueId; error: string }>(),
-    deleteOne: ofType<{ id: UniqueId; router: Router; route: Array<string> }>(),
-    deleteOneSuccess: ofType<UniqueId>(),
-    deleteOneFail: ofType<{ id: UniqueId; error: string }>()
+    usrGetManySuccess: ofType<Array<User>>(),
+    usrGetMany: {},
+    usrGetManyFail: ofType<string>(),
+    usrGetOne: ofType<UniqueId>(),
+    usrGetOneSuccess: ofType<User>(),
+    usrGetOneFail: ofType<string>(),
+    usrAddOne: {},
+    usrCreateOne: ofType<{ resource: User; router: Router; route: Array<string> }>(),
+    usrCreateOneSuccess: ofType<User>(),
+    usrCreateOneFail: ofType<{ id: UniqueId; error: string }>(),
+    usrUpdateOne: ofType<{ resource: User; router: Router; route: Array<string> }>(),
+    usrUpdateOneSuccess: ofType<User>(),
+    usrUpdateOneFail: ofType<{ id: UniqueId; error: string }>(),
+    usrDeleteOne: ofType<{ id: UniqueId; router: Router; route: Array<string> }>(),
+    usrDeleteOneSuccess: ofType<UniqueId>(),
+    usrDeleteOneFail: ofType<{ id: UniqueId; error: string }>()
   },
   {
     tag: 'type',

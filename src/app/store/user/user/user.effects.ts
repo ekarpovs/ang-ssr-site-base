@@ -14,36 +14,36 @@ import { State } from './user.state';
 
 @Injectable()
 export class UserEffects {
-  @Effect() getMany$ = this.actions$.pipe(
-    filter(userActions.is.getMany),
+  @Effect() usrGetMany$ = this.actions$.pipe(
+    filter(userActions.is.usrGetMany),
     withLatestFrom(this.store$.pipe(select(getMany))),
     switchMap(([,users]) => {
       if(users.length !== 0) { 
-        return observableOf(users).pipe(map(userActions.getManySuccess))
+        return observableOf(users).pipe(map(userActions.usrGetManySuccess))
       }
       
       return this.user.getMany$().pipe(
-        map(userActions.getManySuccess),
-        catchError(error => observableOf(userActions.getManyFail(error.error)))
+        map(userActions.usrGetManySuccess),
+        catchError(error => observableOf(userActions.usrGetManyFail(error.error)))
       )
     })
   );
 
-  @Effect() getOne$ = this.actions$.pipe(
-    filter(userActions.is.getOne),
+  @Effect() usrGetOne$ = this.actions$.pipe(
+    filter(userActions.is.usrGetOne),
     map(get('payload')),
     switchMap(payload =>
       !isEmpty(payload)
         ? this.user.getOne$(payload).pipe(
-            map(userActions.getOneSuccess),
-            catchError(error => observableOf(userActions.getOneFail(error.message)))
+            map(userActions.usrGetOneSuccess),
+            catchError(error => observableOf(userActions.usrGetOneFail(error.message)))
           )
-        : observableOf(userActions.getOneFail(ERROR__NO_PAYLOAD.message))
+        : observableOf(userActions.usrGetOneFail(ERROR__NO_PAYLOAD.message))
     )
   );
 
-  @Effect() createOne$ = this.actions$.pipe(
-    filter(userActions.is.createOne),
+  @Effect() usrCreateOne$ = this.actions$.pipe(
+    filter(userActions.is.usrCreateOne),
     map(get('payload')),
     switchMap(payload =>
       flow(
@@ -51,11 +51,11 @@ export class UserEffects {
         negate(isNil)
       )(payload)
         ? this.user.createOne$(payload.resource).pipe(
-            map(userActions.createOneSuccess),
+            map(userActions.usrCreateOneSuccess),
             tap(async () => payload.router.navigate(payload.route)),
             catchError(error =>
               observableOf(
-                userActions.createOneFail({
+                userActions.usrCreateOneFail({
                   id: EMPTY_UNIQUE_ID,
                   error: error.message
                 })
@@ -63,7 +63,7 @@ export class UserEffects {
             )
           )
         : observableOf(
-          userActions.createOneFail({
+          userActions.usrCreateOneFail({
               id: EMPTY_UNIQUE_ID,
               error: ERROR__NO_PAYLOAD.message
             })
@@ -71,8 +71,8 @@ export class UserEffects {
     )
   );
 
-  @Effect() updateOne$ = this.actions$.pipe(
-    filter(userActions.is.updateOne),
+  @Effect() usrUpdateOne$ = this.actions$.pipe(
+    filter(userActions.is.usrUpdateOne),
     map(get('payload')),
     switchMap(payload =>
       flow(
@@ -80,11 +80,11 @@ export class UserEffects {
         negate(isNil)
       )(payload.resource)
         ? this.user.updateOne$(payload.resource).pipe(
-            map(userActions.updateOneSuccess),
+            map(userActions.usrUpdateOneSuccess),
             tap(async () => payload.router.navigate(payload.route)),
             catchError(error =>
               observableOf(
-                userActions.updateOneFail({
+                userActions.usrUpdateOneFail({
                   id: payload.resource._id,
                   error: error.message
                 })
@@ -92,7 +92,7 @@ export class UserEffects {
             )
           )
         : observableOf(
-          userActions.updateOneFail({
+          userActions.usrUpdateOneFail({
               id: EMPTY_UNIQUE_ID,
               error: ERROR__NO_PAYLOAD.message
             })
@@ -100,17 +100,17 @@ export class UserEffects {
     )
   );
 
-  @Effect() deleteOne$ = this.actions$.pipe(
-    filter(userActions.is.deleteOne),
+  @Effect() usrDeleteOne$ = this.actions$.pipe(
+    filter(userActions.is.usrDeleteOne),
     map(get('payload')),
     switchMap(payload =>
       !isNil(payload.id)
         ? this.user.deleteOne$(payload.id).pipe(
-            map(userActions.deleteOneSuccess),
+            map(userActions.usrDeleteOneSuccess),
             tap(async () => payload.router.navigate(payload.route)),
             catchError(error =>
               observableOf(
-                userActions.deleteOneFail({
+                userActions.usrDeleteOneFail({
                   id: payload.id,
                   error: error.message
                 })
@@ -118,7 +118,7 @@ export class UserEffects {
             )
           )
         : observableOf(
-          userActions.deleteOneFail({
+          userActions.usrDeleteOneFail({
               id: payload.id,
               error: ERROR__NO_PAYLOAD.message
             })
