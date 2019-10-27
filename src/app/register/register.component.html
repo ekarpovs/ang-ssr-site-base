@@ -1,77 +1,73 @@
-<div class="container">
-	<div class="card-wrapper">
-		<mat-card class="mat-elevation-z1">
-			<mat-card-header>
-				<mat-card-title>{{ 'PUBLIC.REGISTER.REGISTER' | translate }}</mat-card-title>
-			</mat-card-header>
-			<form [formGroup]="form">
-				<mat-card-content>
-					<mat-form-field>
-            <input matInput formControlName="firstname"
-                   [placeholder]="'PUBLIC.REGISTER.FIRST_NAME' | translate">
-            <mat-error *ngFor="let v of m.firstname; trackBy: m.idx">
-                <mat-error class="error-message" *ngIf="form.get('firstname').hasError(v.type) && 
-                    (form.get('firstname').dirty || form.get('firstname').touched)">{{ v.message }}
-                </mat-error>
-            </mat-error>                   
-					</mat-form-field>
-					<mat-form-field>
-            <input matInput formControlName="lastname"
-                   [placeholder]="'PUBLIC.REGISTER.LAST_NAME' | translate">
-            <mat-error *ngFor="let v of m.lastname; trackBy: m.idx">
-                <mat-error class="error-message" *ngIf="form.get('lastname').hasError(v.type) && 
-                    (form.get('lastname').dirty || form.get('lastname').touched)">{{ v.message }}
-                </mat-error>
-            </mat-error>                   
-					</mat-form-field>
-					<mat-form-field>
-            <input matInput formControlName="username"
-                   [placeholder]="'PUBLIC.REGISTER.USERNAME' | translate">
-            <mat-error *ngFor="let v of m.username; trackBy: m.idx">
-                <mat-error class="error-message" *ngIf="form.get('username').hasError(v.type) && 
-                    (form.get('username').dirty || form.get('username').touched)">{{ v.message }}
-                </mat-error>
-            </mat-error>                   
-					</mat-form-field>
-					<mat-form-field>
-            <input matInput formControlName="email"
-                   [placeholder]="'PUBLIC.REGISTER.E-MAIL' | translate">
-            <mat-error *ngFor="let v of m.email; trackBy: m.idx">
-                <mat-error class="error-message" *ngIf="form.get('email').hasError(v.type) && 
-                    (form.get('email').dirty || form.get('email').touched)">{{ v.message }}
-                </mat-error>
-            </mat-error>
-        </mat-form-field>
-					<mat-form-field>
-            <input matInput formControlName="password"
-                   [placeholder]="'PUBLIC.REGISTER.PASSWORD' | translate">
-            <mat-error *ngFor="let v of m.password; trackBy: m.idx">
-                <mat-error class="error-message" *ngIf="form.get('password').hasError(v.type) && 
-                    (form.get('password').dirty || form.get('password').touched)">{{ v.message }}
-                </mat-error>
-            </mat-error>
-					</mat-form-field>
-				</mat-card-content>
-				<mat-card-actions>
-					<button (click)="onRegister($event)"
-					    [disabled]="form.invalid || pending"
-					    color="primary"
-					    mat-raised-button
-					    type="button">{{ 'PUBLIC.REGISTER.REGISTER' | translate }}
-					</button>
-					<button (click)="onLogin($event)"
-					        color="primary"
-					        mat-raised-button
-					        type="button">{{ 'PUBLIC.REGISTER.GO_TO_LOGIN' | translate }}
-					</button>
-					<button (click)="onCancel($event)"
-					    color="primary"
-					    mat-raised-button
-					    type="button">{{ 'PUBLIC.REGISTER.CANCEL' | translate }}
-					</button>
-				</mat-card-actions>
-			</form>
-			<div *ngIf="error">{{ error }}</div>
-		</mat-card>
-	</div>
-</div>
+<mat-card class="mat-elevation-z1">
+	<mat-card-header>
+		<mat-card-title>{{ 'PUBLIC.REGISTER.REGISTER' | translate }}</mat-card-title>
+	</mat-card-header>
+	<form [formGroup]="form">
+		<mat-card-content>
+			<mat-form-field>
+				<input matInput formControlName="username"
+					[placeholder]="'PUBLIC.REGISTER.USERNAME' | translate">
+				<mat-error *ngFor="let v of m.username; trackBy: m.idx">
+					<mat-error class="error-message" *ngIf="form.get('username').hasError(v.type) && 
+						(form.get('username').dirty || form.get('username').touched)">{{ v.message }}
+					</mat-error>
+				</mat-error>                   
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput formControlName="password"
+					[placeholder]="'PUBLIC.REGISTER.PASSWORD' | translate">
+				<mat-error *ngFor="let v of m.password; trackBy: m.idx">
+					<mat-error class="error-message" *ngIf="form.get('password').hasError(v.type) && 
+						(form.get('password').dirty || form.get('password').touched)">{{ v.message }}
+					</mat-error>
+				</mat-error>
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput formControlName="firstname"
+					[placeholder]="'PUBLIC.REGISTER.FIRST_NAME' | translate">
+				<mat-error *ngFor="let v of m.firstname; trackBy: m.idx">
+					<mat-error class="error-message" *ngIf="form.get('firstname').hasError(v.type) && 
+						(form.get('firstname').dirty || form.get('firstname').touched)">{{ v.message }}
+					</mat-error>
+				</mat-error>                   
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput formControlName="lastname"
+					[placeholder]="'PUBLIC.REGISTER.LAST_NAME' | translate">
+				<mat-error *ngFor="let v of m.lastname; trackBy: m.idx">
+					<mat-error class="error-message" *ngIf="form.get('lastname').hasError(v.type) && 
+						(form.get('lastname').dirty || form.get('lastname').touched)">{{ v.message }}
+					</mat-error>
+				</mat-error>                   
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput formControlName="email"
+					[placeholder]="'PUBLIC.REGISTER.E-MAIL' | translate">
+				<mat-error *ngFor="let v of m.email; trackBy: m.idx">
+					<mat-error class="error-message" *ngIf="form.get('email').hasError(v.type) && 
+						(form.get('email').dirty || form.get('email').touched)">{{ v.message }}
+					</mat-error>
+				</mat-error>
+			</mat-form-field>
+		</mat-card-content>
+		<mat-card-actions>
+			<button (click)="onRegister($event)"
+					[disabled]="form.invalid || pending"
+					color="primary"
+					mat-raised-button
+					type="button">{{ 'PUBLIC.REGISTER.REGISTER' | translate }}
+			</button>
+			<button (click)="onLogin($event)"
+							color="primary"
+							mat-raised-button
+							type="button">{{ 'PUBLIC.REGISTER.GO_TO_LOGIN' | translate }}
+			</button>
+			<button (click)="onCancel($event)"
+					color="primary"
+					mat-raised-button
+					type="button">{{ 'PUBLIC.REGISTER.CANCEL' | translate }}
+			</button>
+		</mat-card-actions>
+	</form>
+	<div *ngIf="error">{{ error }}</div>
+</mat-card>
