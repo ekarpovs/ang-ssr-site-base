@@ -22,17 +22,19 @@
       }
     },
     "LOGIN": {
-      "PAGE_TITLE": "Log in",
+      "MENU_TITLE": "Login",
+      "PAGE_TITLE": "Login",
       "META_DESCRIPTION": "",
       "USERNAME": "Username",
       "PASSWORD": "Password",
-      "LOG_IN": "Log in",
+      "LOG_IN": "Login",
       "GO_TO_REGISTER": "Register",
       "CANCEL": "Cancel",
       "NOTE": "Trying to log in...",
       "ERROR": "Login unsuccessful!"
     },
     "REGISTER": {
+      "MENU_TITLE": "Register",
       "PAGE_TITLE": "Register",
       "META_DESCRIPTION": "",
       "FIRST_NAME": "First name",
@@ -47,6 +49,7 @@
       "ERROR": "Register unsuccessful!"
     },
     "LOGOUT": {
+      "MENU_TITLE": "Logout",
       "PAGE_TITLE": "Logout",
       "META_DESCRIPTION": "",
       "USERNAME": "Username",
@@ -102,6 +105,9 @@
         "CARD_TITLE": "About us",
         "CARD_SUBTITLE": "Yeah, I think this page tells something about us"
       }
+    },
+    "LANGUAGE": {
+      "LANGUAGE": "English"
     }
   }
 }
