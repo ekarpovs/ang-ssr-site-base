@@ -8,7 +8,8 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { RegisterCredentials } from '~/app/framework/auth/models/auth.model';
-import * as FormUtil from '~/app/framework/util/form.util';
+import { formAnimation } from '~/app/shared';
+// import * as FormUtil from '~/app/framework/util/form.util';
 
 import { RegisterValidationService } from './register-validation.service';
 
@@ -16,6 +17,7 @@ import { RegisterValidationService } from './register-validation.service';
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: [ './register.component.scss' ],
+    animations: [formAnimation],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterComponent implements OnInit {
