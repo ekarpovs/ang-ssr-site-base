@@ -5,7 +5,29 @@ body {
   overflow: hidden;
 }
 
-.main {
+#main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content max-content max-content;
+  grid-template-areas:
+  "head"
+  "main"
+  "foot";
+}
+
+app-header {
+  grid-area: head;
+}
+
+router-outlet + * {
+  grid-area: main;
+}
+
+app-footer {
+  grid-area: foot;
+}
+
+.content {
   position: relative;
-  max-height: calc(100vh - #{rem(12.8)});
+  min-height: calc(100vh - #{rem(12.8)});
 }
