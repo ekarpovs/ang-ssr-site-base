@@ -6,6 +6,7 @@ import { BaseApiUrlInterceptor } from './base-api-url.interceptor';
 import { BaseAuthUrlInterceptor } from './base-auth-url.interceptor';
 import { BaseUrlInterceptor } from './base-url.interceptor';
 import { HttpErrorInterceptor } from './http-error-interceptor';
+import { TimeoutInterceptor } from './time-out.interceptor';
 import { UniversalInterceptor } from './universal.interceptor';
 
 @NgModule({
@@ -42,6 +43,12 @@ import { UniversalInterceptor } from './universal.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
+      deps: [Injector, PLATFORM_ID],
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TimeoutInterceptor,
       deps: [Injector, PLATFORM_ID],
       multi: true
     }
