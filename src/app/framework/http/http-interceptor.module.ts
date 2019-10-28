@@ -42,13 +42,13 @@ import { UniversalInterceptor } from './universal.interceptor';
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: HttpErrorInterceptor,
+      useClass: TimeoutInterceptor,
       deps: [Injector, PLATFORM_ID],
       multi: true
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: TimeoutInterceptor,
+      useClass: HttpErrorInterceptor,
       deps: [Injector, PLATFORM_ID],
       multi: true
     }
