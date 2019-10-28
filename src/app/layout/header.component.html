@@ -1,32 +1,33 @@
 ﻿<mat-toolbar class="header mat-elevation-z1" color="primary">
-    <span grid-area="logo">
+    <span>
         <mat-icon class="header__logo">developer_board</mat-icon>
         <span>{{ title | translate }}</span>
     </span>
 
-    <button  grid-area="home" mat-button [routerLink]="['/', '']">
+    <button mat-button [routerLink]="['/', '']">
         {{ 'PUBLIC.HOME.MENU_TITLE' | translate }}
     </button>
 
-    <span  grid-area="users">
+    <span>
         <button *ngIf="isAuthenticated" mat-button [routerLink]="['/', 'users']">
             {{ 'PUBLIC.USER.USER.MENU_TITLE' | translate }}
         </button>
     </span>
 
-    <button grid-area="about" mat-button [routerLink]="['/', 'about']">
+    <button mat-button [routerLink]="['/', 'about']">
         {{ 'PUBLIC.ABOUT.ABOUT.MENU_TITLE' | translate }}
     </button>
 
-    <button grid-area="whoarewe" mat-button [routerLink]="['/', 'about', 'us', 22]">
+    <button mat-button [routerLink]="['/', 'about', 'us', 22]">
         {{ 'PUBLIC.ABOUT.WHO_ARE_WE.MENU_TITLE' | translate }}
     </button>
 
-    <a  grid-area="github" mat-button href="https://www.github.com/ekarpovs">
+    <a  mat-button href="https://www.github.com/ekarpovs" target="_blank">
         Github
     </a>
-
-    <span  grid-area="login">
+    <span></span>
+    <span></span>
+    <span >
         <button *ngIf="!isAuthenticated" mat-icon-button [routerLink]="['/', 'login']">
             <mat-icon>account_circle</mat-icon>
             {{ 'PUBLIC.LOGIN.MENU_TITLE' | translate }}
@@ -37,7 +38,7 @@
         </button>
     </span>
 
-    <span grid-area="language">
+    <span>
         <mat-menu #i18nMenu="matMenu" yPosition="below" xPosition="before" [overlapTrigger]="false">
             <button *ngFor="let language of availableLanguages; trackBy: trackByFn"
                 mat-menu-item

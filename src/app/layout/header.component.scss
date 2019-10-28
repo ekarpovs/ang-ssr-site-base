@@ -5,15 +5,9 @@
     vertical-align: middle;
   }
   display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr; 
+  grid-template-columns: repeat(10, 1fr);
+
   grid-template-areas:
-    "logo",
-    "home",
-    "users",
-    "about",
-    "whoarewe",
-    "github",
-    "login",
-    "language";
+    "logo home users about whoarewe github . . login lang";
 }
