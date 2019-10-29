@@ -1,6 +1,6 @@
-﻿<div id="main">
+﻿<div id="site">
     <app-header></app-header>
-    <div class="content" #scrollContainer [perfectScrollbar]>
+    <div class="page-content" #scrollContainer [perfectScrollbar]>
         <router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>
     </div>
     <app-footer></app-footer>

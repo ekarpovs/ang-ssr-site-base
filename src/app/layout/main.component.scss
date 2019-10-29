@@ -5,13 +5,13 @@ body {
   overflow: hidden;
 }
 
-#main {
+#site {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: max-content max-content max-content;
   grid-template-areas:
   "head"
-  "main"
+  "page-content"
   "foot";
 }
 
@@ -20,14 +20,14 @@ app-header {
 }
 
 router-outlet + * {
-  grid-area: main;
+  grid-area: page-content;
 }
 
 app-footer {
   grid-area: foot;
 }
 
-.content {
+.page-content {
   position: relative;
   min-height: calc(100vh - #{rem(12.8)});
 }
