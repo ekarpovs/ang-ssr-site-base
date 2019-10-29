@@ -1,33 +1,38 @@
 ﻿<mat-toolbar class="header mat-elevation-z1" color="primary">
-    <span>
+    <div class="gr-i1">
         <mat-icon class="header__logo">developer_board</mat-icon>
-        <span>{{ title | translate }}</span>
-    </span>
+        <div>{{ title | translate }}</div>
+    </div>
 
-    <button mat-button [routerLink]="['/', '']">
-        {{ 'PUBLIC.HOME.MENU_TITLE' | translate }}
-    </button>
+    <div class="gr-i2">
+        <button mat-button [routerLink]="['/', '']">
+            {{ 'PUBLIC.HOME.MENU_TITLE' | translate }}
+        </button>
+    </div>
 
-    <span>
+    <div class="gr-i3">
         <button *ngIf="isAuthenticated" mat-button [routerLink]="['/', 'users']">
             {{ 'PUBLIC.USER.USER.MENU_TITLE' | translate }}
         </button>
-    </span>
+    </div>
 
-    <button mat-button [routerLink]="['/', 'about']">
-        {{ 'PUBLIC.ABOUT.ABOUT.MENU_TITLE' | translate }}
-    </button>
+    <div class="gr-i4">
+        <button mat-button [routerLink]="['/', 'about']">
+            {{ 'PUBLIC.ABOUT.ABOUT.MENU_TITLE' | translate }}
+        </button>
+    </div>
 
-    <button mat-button [routerLink]="['/', 'about', 'us', 22]">
+    <div class="gr-i5">
+        <button mat-button [routerLink]="['/', 'about', 'us', 22]">
         {{ 'PUBLIC.ABOUT.WHO_ARE_WE.MENU_TITLE' | translate }}
-    </button>
+        </button>
+    </div>
 
-    <a  mat-button href="https://www.github.com/ekarpovs" target="_blank">
-        Github
-    </a>
-    <span></span>
-    <span></span>
-    <span >
+    <div class="gr-i6">
+        <a  mat-button href="https://www.github.com/ekarpovs" target="_blank">Github</a>
+    </div>
+
+    <div class="gr-i7">
         <button *ngIf="!isAuthenticated" mat-icon-button [routerLink]="['/', 'login']">
             <mat-icon>account_circle</mat-icon>
             {{ 'PUBLIC.LOGIN.MENU_TITLE' | translate }}
@@ -36,9 +41,9 @@
             <mat-icon>logout</mat-icon>
             {{ 'PUBLIC.LOGOUT.MENU_TITLE' | translate }}
         </button>
-    </span>
+    </div>
 
-    <span>
+    <div class="gr-i8">
         <mat-menu #i18nMenu="matMenu" yPosition="below" xPosition="before" [overlapTrigger]="false">
             <button *ngFor="let language of availableLanguages; trackBy: trackByFn"
                 mat-menu-item
@@ -51,5 +56,5 @@
             <mat-icon>language</mat-icon>
             {{ 'PUBLIC.LANGUAGE.LANGUAGE' | translate }}
         </button>
-    </span>
+    </div>
 </mat-toolbar>
