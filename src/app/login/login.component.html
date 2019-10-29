@@ -1,10 +1,11 @@
-<div id="login-form" fxLayoutAlign="center" [@formAnimation]>
-	<mat-card>
-		<mat-card-header>
+<div class="wrapper" [@formAnimation]>
+	<mat-card class="mc-grid">
+		<mat-card-header class="mc-header-item">
 			<mat-card-title>{{ 'PUBLIC.LOGIN.LOG_IN' | translate }}</mat-card-title>
 		</mat-card-header>
+		<mat-card-content class="mc-content-item">
 			<form [formGroup]="form">
-				<mat-card-content>
+				<div class="cont-item1">
 					<mat-form-field>
 						<input matInput formControlName="username"
 										[placeholder]="'PUBLIC.LOGIN.USERNAME' | translate">
@@ -14,6 +15,8 @@
 								</mat-error>
 						</mat-error>                   
 					</mat-form-field>
+				</div>
+				<div class="cont-item2">
 					<mat-form-field>
 						<input matInput formControlName="password"
 										[placeholder]="'PUBLIC.LOGIN.PASSWORD' | translate">
@@ -23,28 +26,30 @@
 								</mat-error>
 						</mat-error>
 					</mat-form-field>
-				</mat-card-content>
-				<mat-card-actions class="actions">
-					<button class="gr-i1" (click)="onLogin($event)"
-									[disabled]="form.invalid || pending"
-									color="primary"
-									mat-raised-button
-									type="button">{{ 'PUBLIC.LOGIN.LOG_IN' | translate }}
-					</button>
-					<button class="gr-i2" (click)="onRegister($event)"
-									color="primary"
-									mat-raised-button
-									type="button">{{ 'PUBLIC.LOGIN.GO_TO_REGISTER' | translate }}
-					</button>
-					<button class="gr-i3" (click)="onCancel($event)"
-									color="primary"
-									mat-raised-button
-									type="button">{{ 'PUBLIC.LOGIN.CANCEL' | translate }}
-					</button>
-				</mat-card-actions>
+				</div>
 			</form>
-		<mat-card-footer>
-			<div *ngIf="error">{{ error }}</div>
-		</mat-card-footer>
+			<!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+		</mat-card-content>
+		<mat-card-actions class="mc-actions-grid">
+			<button class="act-item1" (click)="onLogin($event)"
+							[disabled]="form.invalid || pending"
+							color="primary"
+							mat-raised-button
+							type="button">{{ 'PUBLIC.LOGIN.LOG_IN' | translate }}
+			</button>
+			<button class="act-item2" (click)="onRegister($event)"
+							color="primary"
+							mat-raised-button
+							type="button">{{ 'PUBLIC.LOGIN.GO_TO_REGISTER' | translate }}
+			</button>
+			<button class="act-item3" (click)="onCancel($event)"
+							color="primary"
+							mat-raised-button
+							type="button">{{ 'PUBLIC.LOGIN.CANCEL' | translate }}
+			</button>
+		</mat-card-actions>
+		<!-- <mat-card-footer class="mc-footer-item">
+		</mat-card-footer> -->
+		<div *ngIf="error">{{ error }}</div>
 	</mat-card>
 </div>
