@@ -1,4 +1,4 @@
-<div fxLayoutAlign="center" [@formAnimation]>
+<div id="login-form" fxLayoutAlign="center" [@formAnimation]>
 	<mat-card>
 		<mat-card-header>
 			<mat-card-title>{{ 'PUBLIC.LOGIN.LOG_IN' | translate }}</mat-card-title>
@@ -24,19 +24,19 @@
 						</mat-error>
 					</mat-form-field>
 				</mat-card-content>
-				<mat-card-actions>
-					<button (click)="onLogin($event)"
+				<mat-card-actions class="actions">
+					<button class="gr-i1" (click)="onLogin($event)"
 									[disabled]="form.invalid || pending"
 									color="primary"
 									mat-raised-button
 									type="button">{{ 'PUBLIC.LOGIN.LOG_IN' | translate }}
 					</button>
-					<button (click)="onRegister($event)"
+					<button class="gr-i2" (click)="onRegister($event)"
 									color="primary"
 									mat-raised-button
 									type="button">{{ 'PUBLIC.LOGIN.GO_TO_REGISTER' | translate }}
 					</button>
-					<button (click)="onCancel($event)"
+					<button class="gr-i3" (click)="onCancel($event)"
 									color="primary"
 									mat-raised-button
 									type="button">{{ 'PUBLIC.LOGIN.CANCEL' | translate }}
