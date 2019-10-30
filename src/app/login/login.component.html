@@ -5,28 +5,24 @@
 		</mat-card-header>
 		<mat-card-content class="mc-content-item">
 			<form [formGroup]="form">
-				<div class="cont-item1">
-					<mat-form-field>
-						<input matInput formControlName="username"
-										[placeholder]="'PUBLIC.LOGIN.USERNAME' | translate">
-						<mat-error *ngFor="let v of m.username; trackBy: m.idx">
-								<mat-error class="error-message" *ngIf="form.get('username').hasError(v.type) && 
-										(form.get('username').dirty || form.get('username').touched)">{{ v.message }}
-								</mat-error>
-						</mat-error>                   
-					</mat-form-field>
-				</div>
-				<div class="cont-item2">
-					<mat-form-field>
-						<input matInput formControlName="password"
-										[placeholder]="'PUBLIC.LOGIN.PASSWORD' | translate">
-						<mat-error *ngFor="let v of m.password; trackBy: m.idx">
-								<mat-error class="error-message" *ngIf="form.get('password').hasError(v.type) && 
-										(form.get('password').dirty || form.get('password').touched)">{{ v.message }}
-								</mat-error>
+				<mat-form-field class="cont-item1">
+					<input matInput formControlName="username"
+						[placeholder]="'PUBLIC.LOGIN.USERNAME' | translate">
+					<mat-error *ngFor="let v of m.username; trackBy: m.idx">
+						<mat-error class="error-message" *ngIf="form.get('username').hasError(v.type) && 
+								(form.get('username').dirty || form.get('username').touched)">{{ v.message }}
 						</mat-error>
-					</mat-form-field>
-				</div>
+					</mat-error>                   
+				</mat-form-field>
+				<mat-form-field class="cont-item2">
+					<input matInput formControlName="password"
+						[placeholder]="'PUBLIC.LOGIN.PASSWORD' | translate">
+					<mat-error *ngFor="let v of m.password; trackBy: m.idx">
+						<mat-error class="error-message" *ngIf="form.get('password').hasError(v.type) && 
+								(form.get('password').dirty || form.get('password').touched)">{{ v.message }}
+						</mat-error>
+					</mat-error>
+				</mat-form-field>
 			</form>
 			<!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
 		</mat-card-content>
