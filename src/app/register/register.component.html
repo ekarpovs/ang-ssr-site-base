@@ -15,13 +15,13 @@
 					</mat-error>                   
 				</mat-form-field>
 				<mat-form-field>
-					<input matInput formControlName="username"
-						[placeholder]="'PUBLIC.REGISTER.USERNAME' | translate">
-					<mat-error *ngFor="let v of m.username; trackBy: m.idx">
-						<mat-error class="error-message" *ngIf="form.get('username').hasError(v.type) && 
-							(form.get('username').dirty || form.get('username').touched)">{{ v.message }}
+					<input matInput formControlName="password"
+						[placeholder]="'PUBLIC.LOGIN.PASSWORD' | translate">
+					<mat-error *ngFor="let v of m.password; trackBy: m.idx">
+						<mat-error class="error-message" *ngIf="form.get('password').hasError(v.type) && 
+							(form.get('password').dirty || form.get('password').touched)">{{ v.message }}
 						</mat-error>
-					</mat-error>                   
+					</mat-error>
 				</mat-form-field>
 				<mat-form-field>
 					<input matInput formControlName="firstname"
