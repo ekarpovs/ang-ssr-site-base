@@ -11,3 +11,7 @@
     background-size: cover;
   }
 }
+
+.card {
+  max-height: calc(100vh - #{rem(12.8)});
+}
