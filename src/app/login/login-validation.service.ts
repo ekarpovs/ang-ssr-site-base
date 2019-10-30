@@ -2,15 +2,10 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 
 
-const DOMAIN_NAME_MIN_LENGTH = 5;
-const DOMAIN_NAME_MAX_LENGTH = 255;
-const OWNER_NAME_MIN_LENGTH = 5;
-const OWNER_NAME_MAX_LENGTH = 255;
 const USER_NAME_MIN_LENGTH = 5;
 const USER_NAME_MAX_LENGTH = 255;
 const PASSWORD_MIN_LENGTH = 5;
 const PASSWORD_MAX_LENGTH = 255;
-const EMAIL_MAX_LENGTH = 255;
 
 @Injectable({
   providedIn: 'root'
