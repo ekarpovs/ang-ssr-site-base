@@ -3,21 +3,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { MetaService } from '@ngx-meta/core';
 import { TranslateService } from '@ngx-translate/core';
-import { getOr, isNil } from 'lodash/fp';
-import { Observable, of as observableOf, zip } from 'rxjs';
-import { skipWhile, switchMap, takeUntil } from 'rxjs/operators';
+import { Observable, zip } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { appRoutePaths } from '~/app/app.routes.paths';
 import { BaseContainerComponent } from '~/app/framework/core';
 import { UniqueId } from '~/app/framework/ngrx';
 import { rtrActions } from '~/app/framework/store/rtr/rtr/rtr.actions';
-import { RenderFlag, routeAnimation } from '~/app/shared';
-import { AuthSelectors , State, User, userActions, UserSelectors} from '~/app/store';
+import { formAnimation } from '~/app/shared';
+import { State, User, userActions, UserSelectors} from '~/app/store';
 
 @Component({
   templateUrl: './user-detail-container.component.html',
   styleUrls: ['./user-detail-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [routeAnimation]
+  animations: [formAnimation]
 })
 export class UserDetailContainerComponent extends BaseContainerComponent implements OnInit {
   user$: Observable<User>;
@@ -65,7 +64,7 @@ export class UserDetailContainerComponent extends BaseContainerComponent impleme
     }));
   }
 
-  save(resource: any): void {
+  save(resource: User): void {
       if (this.mode === 'create') {
         delete resource._id;
         this.store$.dispatch(

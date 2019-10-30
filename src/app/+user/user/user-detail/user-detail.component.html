@@ -1,71 +1,82 @@
-<form novalidate autocomplete="off" [formGroup]="form">
-    <div *ngIf="mode!=='delete'" fxLayout="column" fxLayoutGap="5%">
-        <mat-form-field fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
-            <input matInput formControlName="firstname"
-                   [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.FIRST_NAME' | translate">
-            <mat-error *ngFor="let v of m.firstname; trackBy: trackByIdFn">
-                <mat-error class="error-message" *ngIf="form.get('firstname').hasError(v.type) && 
-                    (form.get('firstname').dirty || form.get('firstname').touched)">{{ v.message }}
-                </mat-error>
-            </mat-error>                   
-        </mat-form-field>
-        <mat-form-field fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
-            <input matInput formControlName="lastname"
-                   [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.LAST_NAME' | translate">
-            <mat-error *ngFor="let v of m.lastname; trackBy: trackByIdFn">
-                <mat-error class="error-message" *ngIf="form.get('lastname').hasError(v.type) && 
-                    (form.get('lastname').dirty || form.get('lastname').touched)">{{ v.message }}
-                </mat-error>
-            </mat-error>                   
-        </mat-form-field>
-        <mat-form-field fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
+<div class="wrapper">
+  <mat-card class="mc-grid">
+    <mat-card-header class="mc-header-item">
+      <mat-card-title>{{ 'PUBLIC.USER.USER.USER_DETAIL.PAGE_TITLE' | translate }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="mc-content-item">
+      <form autocomplete="off" [formGroup]="form">
+        <div>
+          <mat-form-field>
             <input matInput formControlName="username"
-                   [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.NAME' | translate">
-            <mat-error *ngFor="let v of m.username; trackBy: trackByIdFn">
-                <mat-error class="error-message" *ngIf="form.get('username').hasError(v.type) && 
-                    (form.get('username').dirty || form.get('username').touched)">{{ v.message }}
-                </mat-error>
+              [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.NAME' | translate"/>
+            <mat-error *ngFor="let v of m.username; trackBy:trackByIdFn">
+              <mat-error class="error-message" *ngIf="form.get('username').hasError(v.type) && 
+                (form.get('username').dirty || form.get('username').touched)">{{ v.message }}
+              </mat-error>
             </mat-error>                   
-        </mat-form-field>
-        <mat-form-field fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
-            <input matInput formControlName="email"
-                   [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.E-MAIL' | translate">
-            <mat-error *ngFor="let v of m.email; trackBy: trackByIdFn">
-                <mat-error class="error-message" *ngIf="form.get('email').hasError(v.type) && 
-                    (form.get('email').dirty || form.get('email').touched)">{{ v.message }}
-                </mat-error>
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field *ngIf="mode==='create'" fxLayout="column" fxLayoutGap="5%" fxFlex="80%">
+          </mat-form-field>             
+          <mat-form-field>
             <input matInput formControlName="password"
-                   [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.PASSWORD' | translate">
+              [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.PASSWORD' | translate"/>
             <mat-error *ngFor="let v of m.password; trackBy: trackByIdFn">
-                <mat-error class="error-message" *ngIf="form.get('password').hasError(v.type) && 
-                    (form.get('password').dirty || form.get('password').touched)">{{ v.message }}
-                </mat-error>
+              <mat-error class="error-message" *ngIf="form.get('password').hasError(v.type) && 
+                (form.get('password').dirty || form.get('password').touched)">{{ v.message }}
+              </mat-error>
             </mat-error>
-        </mat-form-field>
-    <div fxLayout="column" fxLayoutGap="5%" fxFlex="20%"></div>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="24px">
-        <button *ngIf="mode!=='delete'" #submit
-                mat-raised-button
-                color="accent"
-                [disabled]="form.invalid"
-                (click)="onSave(saveClick)">
-            {{ 'PUBLIC.SHARED.ACTION.SAVE' | translate }}
+          </mat-form-field>    
+          <mat-form-field>
+            <input matInput formControlName="firstname"
+              [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.FIRST_NAME' | translate"/>
+            <mat-error *ngFor="let v of m.firstname; trackBy: trackByIdFn">
+              <mat-error class="error-message" *ngIf="form.get('firstname').hasError(v.type) && 
+                (form.get('firstname').dirty || form.get('firstname').touched)">{{ v.message }}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="lastname"
+              [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.LAST_NAME' | translate"/>
+            <mat-error *ngFor="let v of m.lastname; trackBy: trackByIdFn">
+              <mat-error class="error-message" *ngIf="form.get('lastname').hasError(v.type) && 
+                (form.get('lastname').dirty || form.get('lastname').touched)">{{ v.message }}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="email" 
+              [placeholder]="'PUBLIC.USER.USER.USER_DETAIL.E-MAIL' | translate" />
+            <mat-error *ngFor="let v of m.email; trackBy: trackByIdFn">
+              <mat-error class="error-message" *ngIf="form.get('email').hasError(v.type) && 
+              (form.get('email').dirty || form.get('email').touched)">{{ v.message }}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>   
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="mc-actions-grid">
+        <button *ngIf="mode !== 'delete'" 
+          class="act-item1" (click)="onSave(saveClick)"
+          [disabled]="form.invalid"
+          color="primary"
+          #submit
+          mat-raised-button
+          type="button">{{ 'PUBLIC.SHARED.ACTION.SAVE' | translate }}
         </button>
-        <button *ngIf="mode==='delete'" #delete
-                mat-raised-button
-                color="accent"
-                (click)="onDelete(deleteClick)">
-            {{ 'PUBLIC.SHARED.ACTION.DELETE' | translate }}
+        <button *ngIf="mode === 'delete'" 
+          class="act-item1" (click)="onDelete(deleteClick)"
+          color="primary"
+          #delete
+          mat-raised-button 
+          type="button">{{ 'PUBLIC.SHARED.ACTION.DELETE' | translate }}
         </button>
-        <button #cancel
-                mat-raised-button
-                color="accent"
-                (click)="onCancel(cancelClick)">
-            {{ 'PUBLIC.SHARED.ACTION.CANCEL' | translate }}
+        <button 
+          class="act-item3" (click)="onCancel(cancelClick)"
+          color="primary"
+          #cancel 
+          mat-raised-button 
+          type="button">{{ 'PUBLIC.SHARED.ACTION.CANCEL' | translate }}
         </button>
-    </div>
-</form>
+    </mat-card-actions>
+  </mat-card>
+</div>

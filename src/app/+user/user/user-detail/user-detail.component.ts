@@ -70,6 +70,8 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
     if (this.mode === 'edit') {
       this.form.get('username').disable();
       this.form.get('password').clearValidators();
+    } else if (this.mode === 'delete') {
+      this.form.disable({ onlySelf: true });
     } 
   }
 
