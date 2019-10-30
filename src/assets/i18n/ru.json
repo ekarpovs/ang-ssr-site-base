@@ -21,6 +21,7 @@
       }
     },
     "LOGIN": {
+      "MENU_TITLE": "Вход",
       "PAGE_TITLE": "Вход",
       "META_DESCRIPTION": "",
       "USERNAME": "Имя пользователя",
@@ -32,6 +33,7 @@
       "ERROR": "Вход - ошибка!"
     },
     "REGISTER": {
+      "MENU_TITLE": "Регистрация",
       "PAGE_TITLE": "Регистрация",
       "META_DESCRIPTION": "",
       "FIRST_NAME": "Имя",
@@ -46,6 +48,7 @@
       "ERROR": "Регистрация - ошибка!"
     },
     "LOGOUT": {
+      "MENU_TITLE": "Выход",
       "PAGE_TITLE": "Выход",
       "META_DESCRIPTION": "",
       "USERNAME": "Имя пользователя",
@@ -101,6 +104,9 @@
         "CARD_TITLE": "О нас",
         "CARD_SUBTITLE": "Эта  страница о нас"
       }
+    },
+    "LANGUAGE": {
+      "LANGUAGE": "Русский"
     }
   }
 }

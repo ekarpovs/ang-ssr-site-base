@@ -4,4 +4,41 @@
   @include el('logo') {
     vertical-align: middle;
   }
+  display: grid;
+  grid-template-rows: 1fr; 
+  grid-template-columns: repeat(12, [col-start] 1fr);
+
+  grid-template-areas:
+    "logo home users about whoarewe github login lang";
+}
+
+.gr-i1 {
+  grid-area: logo;
+}
+.gr-i2 {
+  grid-area: home;
+}
+.gr-i3 {
+  grid-area: users;
+  grid-column: col-start 4
+}
+.gr-i4 {
+  grid-area: about;
+  grid-column: col-start 5
+}
+.gr-i5 {
+  grid-area: whoarewe;
+  grid-column: col-start 6
+}
+.gr-i6 {
+  grid-area: github;
+  grid-column: col-start 8
+}
+.gr-i7 {
+  grid-area: login;
+  grid-column: col-start 11
+}
+.gr-i8 {
+  grid-area: lang;
+  grid-column: col-start 12
 }

@@ -19,6 +19,7 @@ import { configFactory, CoreModule, metaFactory, SharedModule } from '~/app/fram
 import { HttpInterceptorModule } from '~/app/framework/http';
 import { ChangeLanguageComponent, I18NModule, translateFactory } from '~/app/framework/i18n';
 import { MaterialModule } from '~/app/framework/material';
+import { FooterComponent } from '~/app/layout/footer.component';
 import { HeaderComponent } from '~/app/layout/header.component';
 import { MainComponent } from '~/app/layout/main.component';
 import { StoreModule } from '~/app/store';
@@ -66,7 +67,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = { supp
     MaterialModule,
     StoreModule.forRoot()
   ],
-  declarations: [HeaderComponent, MainComponent, AppComponent],
+  declarations: [AppComponent, HeaderComponent, MainComponent, FooterComponent ],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,

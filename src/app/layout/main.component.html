@@ -1,6 +1,7 @@
-﻿<div fxLayout="column" fxFlex>
+﻿<div id="site">
     <app-header></app-header>
-    <div class="main" #scrollContainer [perfectScrollbar]>
+    <div class="page-content" #scrollContainer [perfectScrollbar]>
         <router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>
     </div>
+    <app-footer></app-footer>
 </div>
