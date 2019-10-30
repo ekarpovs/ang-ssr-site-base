@@ -1,10 +1,10 @@
-<div fxLayoutAlign="center" [@formAnimation]>
-	<mat-card>
-		<mat-card-header>
+<div class="wrapper" [@formAnimation]>
+	<mat-card class="mc-grid">
+		<mat-card-header class="mc-header-item">
 			<mat-card-title>{{ 'PUBLIC.REGISTER.REGISTER' | translate }}</mat-card-title>
 		</mat-card-header>
-		<form [formGroup]="form">
-			<mat-card-content>
+		<mat-card-content class="mc-content-item">
+			<form [formGroup]="form">
 				<mat-form-field>
 					<input matInput formControlName="username"
 						[placeholder]="'PUBLIC.REGISTER.USERNAME' | translate">
@@ -15,13 +15,13 @@
 					</mat-error>                   
 				</mat-form-field>
 				<mat-form-field>
-					<input matInput formControlName="password"
-						[placeholder]="'PUBLIC.REGISTER.PASSWORD' | translate">
-					<mat-error *ngFor="let v of m.password; trackBy: m.idx">
-						<mat-error class="error-message" *ngIf="form.get('password').hasError(v.type) && 
-							(form.get('password').dirty || form.get('password').touched)">{{ v.message }}
+					<input matInput formControlName="username"
+						[placeholder]="'PUBLIC.REGISTER.USERNAME' | translate">
+					<mat-error *ngFor="let v of m.username; trackBy: m.idx">
+						<mat-error class="error-message" *ngIf="form.get('username').hasError(v.type) && 
+							(form.get('username').dirty || form.get('username').touched)">{{ v.message }}
 						</mat-error>
-					</mat-error>
+					</mat-error>                   
 				</mat-form-field>
 				<mat-form-field>
 					<input matInput formControlName="firstname"
@@ -50,28 +50,28 @@
 						</mat-error>
 					</mat-error>
 				</mat-form-field>
-			</mat-card-content>
-			<mat-card-actions>
-				<button (click)="onRegister($event)"
-						[disabled]="form.invalid || pending"
-						color="primary"
-						mat-raised-button
-						type="button">{{ 'PUBLIC.REGISTER.REGISTER' | translate }}
-				</button>
-				<button (click)="onLogin($event)"
-								color="primary"
-								mat-raised-button
-								type="button">{{ 'PUBLIC.REGISTER.GO_TO_LOGIN' | translate }}
-				</button>
-				<button (click)="onCancel($event)"
-						color="primary"
-						mat-raised-button
-						type="button">{{ 'PUBLIC.REGISTER.CANCEL' | translate }}
-				</button>
-			</mat-card-actions>
-		</form>
-		<mat-card-footer>
-			<div *ngIf="error">{{ error }}</div>
-		</mat-card-footer>
+			</form>
+		</mat-card-content>
+		<mat-card-actions class="mc-actions-grid">
+			<button class="act-item1" (click)="onRegister($event)"
+					[disabled]="form.invalid || pending"
+					color="primary"
+					mat-raised-button
+					type="button">{{ 'PUBLIC.REGISTER.REGISTER' | translate }}
+			</button>
+			<button class="act-item2" (click)="onLogin($event)"
+							color="primary"
+							mat-raised-button
+							type="button">{{ 'PUBLIC.REGISTER.GO_TO_LOGIN' | translate }}
+			</button>
+			<button class="act-item3" (click)="onCancel($event)"
+					color="primary"
+					mat-raised-button
+					type="button">{{ 'PUBLIC.REGISTER.CANCEL' | translate }}
+			</button>
+		</mat-card-actions>
+		<!-- <mat-card-footer> -->
+		<div *ngIf="error">{{ error }}</div>
+		<!-- </mat-card-footer> -->
 	</mat-card>
 </div>
