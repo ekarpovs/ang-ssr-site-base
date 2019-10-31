@@ -53,6 +53,8 @@ mat-card {
 }
 mat-card-header {
   margin-bottom: 10px;
+  justify-self: center;
+  align-self: center;
 }
 mat-form-field {
   width: 100%;
@@ -61,4 +63,6 @@ mat-form-field {
 button {
   height: 35px;
   width: auto;
+  justify-self: center;
+  align-self: center;
 }
