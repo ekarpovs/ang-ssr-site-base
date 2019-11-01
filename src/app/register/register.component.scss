@@ -28,7 +28,7 @@
 
       display: grid;
       grid-template-rows: 1fr;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 3fr 1fr 2fr 2fr;
       .act-item1 {
         grid-column: 1;
       }
@@ -63,6 +63,6 @@ mat-form-field {
 button {
   height: 35px;
   width: auto;
-  justify-self: center;
+  justify-self: left;
   align-self: center;
 }
