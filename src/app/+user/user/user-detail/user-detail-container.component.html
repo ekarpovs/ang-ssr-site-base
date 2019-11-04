@@ -2,15 +2,11 @@
     <div *ngIf="error$ | async">
         Error: {{ (error$ | async) }}
     </div>
-    <app-card 
-        [data]="user$ | async"
-        [isProcessing]="isProcessing$ | async">
-        <app-user-detail *ngIf="!(isProcessing$ | async)"
-            [user]="user$ | async"
-            [mode]="mode"
-            (cancelClick)="cancel($event)"
-            (deleteClick)="delete($event)"
-            (saveClick)="save($event)">
-        </app-user-detail>
-    </app-card>
+    <app-user-detail *ngIf="!(isProcessing$ | async)"
+        [user]="user$ | async"
+        [mode]="mode"
+        (cancelClick)="cancel($event)"
+        (deleteClick)="delete($event)"
+        (saveClick)="save($event)">
+    </app-user-detail>
 </div>
