@@ -6,7 +6,15 @@
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 <!-- prettier-ignore-end -->
 
-**`ang-ssr-site-base`** is a client project for a site, based on: <https://github.com/ng-seed/universal>  
+**`ang-ssr-site-base`** is a client project for a site, based on: <https://github.com/ng-seed/universal>
+
+Most significant changes and improvements:
+- Fix state overloading after execution an each action.
+- Changed effects to avoid redurance backend calls.
+- Implemented real Login/Register with Authorization token.
+- Fixed (implemented) Create, Edit Delete a componemt behavior.
+- Chnaged application/ components layout for CSS grid usage.
+- Implemented backend (look at the api-side base project) for debug the application.
 
 Application organization, providing the following features:
 
