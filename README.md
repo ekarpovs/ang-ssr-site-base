@@ -9,18 +9,19 @@
 **`ang-ssr-site-base`** is a client project for a site, based on: <https://github.com/ng-seed/universal>
 
 Most significant changes and improvements:
+
 - Fix state overloading after execution an each action.
 - Changed effects to avoid redurance backend calls.
 - Implemented real Login/Register with Authorization token.
 - Fixed (implemented) Create, Edit Delete a componemt behavior.
-- Chnaged application/ components layout for CSS grid usage.
+- Changed application/ components layout for CSS grid usage.
 - Implemented backend (look at the api-side base project) for debug the application.
 
 Application organization, providing the following features:
 
 - [x] Providing a ang-ssr-site-base project using the [Angular] framework.
 - [x] Includes [ngrx-powered] **CRUD feature** tutorial.
-- [x] Compiling bundles for both browser (*SPA*) and server ([Angular Universal]) platforms.
+- [x] Compiling bundles for both browser (_SPA_) and server ([Angular Universal]) platforms.
 - [x] Rebased on [Angular CLI] to focus on features and development productivity, not on build tools.
 - [x] Customizable webpack configuration via [@angular-builders].
 - [x] Using the modern **UI components** of [Angular Material].
@@ -35,12 +36,12 @@ Application organization, providing the following features:
 - [x] Deferring initialization of modules via [Lazy loading].
 - [x] Uses [ngrx/store] for **state management**.
 - [x] Uses [ngrx/entity] state adapter to **manipulate** and **query** entity collections.
-- [x] Uses [ngrx/effects]  side effect model to  to model **event sources** as **actions**.
+- [x] Uses [ngrx/effects] side effect model to to model **event sources** as **actions**.
 - [x] Uses [unionize] for **boilerplate-free** functional sum types.
 - [x] Uses **[ngx-config]** for configuration management.
 - [x] Uses **[ngx-cache]** for application-wide caching.
 - [x] Uses [ngx-translate] for i18n support.
-- [x] Uses **[ngx-meta]** for SEO (*title, meta tags, and Open Graph tags for social sharing*).
+- [x] Uses **[ngx-meta]** for SEO (_title, meta tags, and Open Graph tags for social sharing_).
 - [x] Uses [ngx-perfect-scrollbar] for scrollbars.
 - [x] Vendor-agnostic analytics via [angulartics2].
 - [x] Unit tests with **[Jest]**, including code coverage.
@@ -54,24 +55,25 @@ You can find the **project documentation** [here](https://github.com/ekarpovs/an
 
 ## Table of contents
 
-- [Table of contents](#Table-of-contents)
-- [Prerequisites](#Prerequisites)
-- [Getting started](#Getting-started)
-  - [Installation](#Installation)
-  - [Setting up upstream repository](#Setting-up-upstream-repository)
-  - [Development and builds](#Development-and-builds)
-    - [Install dependencies](#Install-dependencies)
-    - [Development servers](#Development-servers)
-    - [Build](#Build)
-    - [Running tests](#Running-tests)
-  - [CLI Scaffolding](#CLI-Scaffolding)
-    - [Example](#Example)
-      - [Initial store setup](#Initial-store-setup)
-      - [Feature store module setup](#Feature-store-module-setup)
-      - [Container & child components setup](#Container--child-components-setup)
-- [Directory structure](#Directory-structure)
-- [License](#License)
-- [Known issues](#Known-issues)
+- [ANG-SSR-SITE-BASE](#ang-ssr-site-base)
+  - [Table of contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Getting started](#getting-started)
+    - [Installation](#installation)
+    - [Setting up upstream repository](#setting-up-upstream-repository)
+    - [Development and builds](#development-and-builds)
+      - [Install dependencies](#install-dependencies)
+      - [Development servers](#development-servers)
+      - [Build](#build)
+      - [Running tests](#running-tests)
+    - [CLI Scaffolding](#cli-scaffolding)
+      - [Example](#example)
+        - [Initial store setup](#initial-store-setup)
+        - [Feature store module setup](#feature-store-module-setup)
+        - [Container & child components setup](#container--child-components-setup)
+  - [Directory structure](#directory-structure)
+  - [License](#license)
+  - [Known issues](#known-issues)
 
 ## Prerequisites
 
@@ -113,7 +115,7 @@ upstream  https://github.com/ekarpovs/ang-ssr-site-base.git (push)
 $ git push
 ```
 
-Now, you can create a new directory (*ex: `src/app/shared`*) to build your codebase out, while benefiting from the
+Now, you can create a new directory (_ex: `src/app/shared`_) to build your codebase out, while benefiting from the
 client framework located at the `src/app/framework` directory.
 
 In order to merge the latest upstream changes, simply follow:
@@ -193,15 +195,8 @@ collection.
 
 `@schematics/angular` blueprints :
 
--* class
--* component
--* directive
--* enum
--* guard
--* interface
--* module
--* pipe
--* service
+-_ class -_ component -_ directive -_ enum -_ guard -_ interface -_ module -_ pipe
+-\* service
 
 #### Example
 
@@ -213,13 +208,8 @@ $ ng g module domain
 
 `@ngrx/schematics` blueprints :
 
--* action
--* container
--* effect
--* entity
--* feature
--* reducer
--* store
+-_ action -_ container -_ effect -_ entity -_ feature -_ reducer
+-\* store
 
 ##### Initial store setup
 
@@ -307,15 +297,15 @@ $ ng g c +domain/domain/domain-detail -c OnPush
 
 ## Directory structure
 
-We use the **component approach** in this project, which is a *standard for developing Angular apps* and also a great
+We use the **component approach** in this project, which is a _standard for developing Angular apps_ and also a great
 way to ensure maintainable code by encapsulation of our behavior logic.
 
-A component is basically a self contained app usually in a single file or a directory with each concern as a file: *style*,
-*template*, *specs*, and *component class*.
+A component is basically a self contained app usually in a single file or a directory with each concern as a file: _style_,
+_template_, _specs_, and _component class_.
 
-> As an old convention, we use the **`+` prefix** for *lazy-loaded* modules. Please keep in mind that it does not change
-the *router behavior*, neither makes the directory *unworkable*. It's just a handy *method* to **identify lazy-loaded modules**
-by having a straight look at the directory structure.
+> As an old convention, we use the **`+` prefix** for _lazy-loaded_ modules. Please keep in mind that it does not change
+> the _router behavior_, neither makes the directory _unworkable_. It's just a handy _method_ to **identify lazy-loaded modules**
+> by having a straight look at the directory structure.
 
 ```bash
 universal/
@@ -377,22 +367,22 @@ The MIT License (MIT)
 
 Copyright (c) 2019 [Evgeny Karpovsky]
 
-[Angular]: https://angular.io
+[angular]: https://angular.io
 [ngrx-powered]: http://ngrx.github.io
-[Angular Universal]: https://angular.io/guide/universal
-[Angular CLI]: https://cli.angular.io
+[angular universal]: https://angular.io/guide/universal
+[angular cli]: https://cli.angular.io
 [@angular-builders]: https://github.com/meltedspark/angular-builders
-[Angular Material]: https://material.angular.io
+[angular material]: https://material.angular.io
 [flex-layout]: https://github.com/angular/flex-layout
-[AoT compilation]: https://angular.io/docs/ts/latest/cookbook/aot-compiler.html
-[Angular Devkit]: https://github.com/angular/angular-cli
-[SCSS]: http://sass-lang.com
+[aot compilation]: https://angular.io/docs/ts/latest/cookbook/aot-compiler.html
+[angular devkit]: https://github.com/angular/angular-cli
+[scss]: http://sass-lang.com
 [autoprefixer]: https://github.com/postcss/autoprefixer
 [browserslist]: https://github.com/browserslist/browserslist
 [stylelint-config-standard]: https://github.com/stylelint/stylelint-config-standard
 [stylelint]: https://stylelint.io/
-[Lazy loading]: https://angular-2-training-book.rangle.io/handout/modules/lazy-loading-module.html
-[TransferState]: https://angular.io/api/platform-browser/TransferState
+[lazy loading]: https://angular-2-training-book.rangle.io/handout/modules/lazy-loading-module.html
+[transferstate]: https://angular.io/api/platform-browser/TransferState
 [ngrx/store]: https://ngrx.io/guide/store
 [ngrx/entity]: https://ngrx.io/guide/entity
 [ngrx/effects]: https://ngrx.io/guide/effects
@@ -404,24 +394,24 @@ Copyright (c) 2019 [Evgeny Karpovsky]
 [ngx-i18n-router]: https://github.com/fulls1z3/ngx-i18n-router
 [ngx-perfect-scrollbar]: https://github.com/zefoy/ngx-perfect-scrollbar
 [angulartics2]: https://github.com/angulartics/angulartics2
-[Jest]: https://facebook.github.io/jest
-[Nightmare]: https://github.com/segmentio/nightmare
-[CircleCI]: https://circleci.com
+[jest]: https://facebook.github.io/jest
+[nightmare]: https://github.com/segmentio/nightmare
+[circleci]: https://circleci.com
 [angular-tslint-rules]: https://github.com/ng-seed/angular-tslint-rules
-[TSLint]: https://github.com/palantir/tslint
+[tslint]: https://github.com/palantir/tslint
 [codelyzer]: https://github.com/mgechev/codelyzer
 
 ## Known issues
 
 1. ngx-cache/fs-storage
-Error: EEXIST: file already exists, mkdir 'D:\Projects\vs-site\.cache'
-    at Object.mkdirSync (fs.js:768:3)
-    at new FsStorageService (D:\Projects\vs-site\node_modules\@ngx-cache\fs-storage\bundles\ngx-cache-fs-storage.umd.js:131:20)
-    at _createClass (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21284:24)
-    at _createProviderInstance (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21256:30)
-    at resolveNgModuleDep (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21220:25)
-    at NgModuleRef_.get (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21928:20)
-    at new FsCacheService (D:\Projects\vs-site\node_modules\@ngx-cache\platform-server\bundles\ngx-cache-platform-server.umd.js:41:39)
-    at _createClass (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21286:24)
-    at _createProviderInstance (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21256:30)
-    at resolveNgModuleDep (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21220:25)
+   Error: EEXIST: file already exists, mkdir 'D:\Projects\vs-site\.cache'
+   at Object.mkdirSync (fs.js:768:3)
+   at new FsStorageService (D:\Projects\vs-site\node*modules\@ngx-cache\fs-storage\bundles\ngx-cache-fs-storage.umd.js:131:20)
+   at \_createClass (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21284:24)
+   at \_createProviderInstance (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21256:30)
+   at resolveNgModuleDep (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21220:25)
+   at NgModuleRef*.get (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21928:20)
+   at new FsCacheService (D:\Projects\vs-site\node_modules\@ngx-cache\platform-server\bundles\ngx-cache-platform-server.umd.js:41:39)
+   at \_createClass (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21286:24)
+   at \_createProviderInstance (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21256:30)
+   at resolveNgModuleDep (D:\Projects\vs-site\node_modules\@angular\core\bundles\core.umd.js:21220:25)
