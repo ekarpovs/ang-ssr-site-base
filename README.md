@@ -12,7 +12,11 @@ Most significant changes and improvements:
 
 - Fix state overloading after execution an each action.
 - Changed effects to avoid redurance backend calls.
-- Implemented real Login/Register with Authorization token.
+- Implemented real Login/Register with Authorization JWT token.
+- Implemented auth and routing via ngrx.
+- Implemented AuthInterceptor - adds the JWT token to the request's header.
+- Implemented HttpErrorInterceptor - provides searate handling of client and server sides HTTP errors.
+- Implemented TimeoutInterceptor - cancels HTTP requests after timeout.
 - Fixed (implemented) Create, Edit Delete a componemt behavior.
 - Changed application/ components layout for CSS grid usage.
 - Implemented backend (look at the api-side base project) for debug the application.
