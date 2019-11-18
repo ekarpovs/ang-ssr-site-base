@@ -55,23 +55,27 @@
       </form>
     </mat-card-content>
     <mat-card-actions class="mc-actions-grid">
-        <button *ngIf="mode !== 'delete'" 
-          class="act-item1" (click)="onSave(saveClick)"
-          [disabled]="form.invalid"
-          color="primary"
-          #submit
-          mat-raised-button
-          type="button">{{ 'PUBLIC.SHARED.ACTION.SAVE' | translate }}
-        </button>
-        <button *ngIf="mode === 'delete'" 
-          class="act-item1" (click)="onDelete(deleteClick)"
-          color="primary"
-          #delete
-          mat-raised-button 
-          type="button">{{ 'PUBLIC.SHARED.ACTION.DELETE' | translate }}
-        </button>
-        <button 
-          class="act-item3" (click)="onCancel(cancelClick)"
+        <ng-container  *ngIf="mode !== 'delete'">
+            <button class="act-item1" 
+            (click)="onSave(saveClick)"
+            [disabled]="form.invalid"
+            color="primary"
+            #submit
+            mat-raised-button
+            type="button">{{ 'PUBLIC.SHARED.ACTION.SAVE' | translate }}
+          </button> 
+        </ng-container>
+        <ng-container  *ngIf="mode === 'delete'">
+          <button class="act-item1"
+            (click)="onDelete(deleteClick)"
+            color="primary"
+            #delete
+            mat-raised-button 
+            type="button">{{ 'PUBLIC.SHARED.ACTION.DELETE' | translate }}
+          </button>
+        </ng-container>
+        <button class="act-item3" 
+          (click)="onCancel(cancelClick)"
           color="primary"
           #cancel 
           mat-raised-button 
