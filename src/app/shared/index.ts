@@ -1,4 +1,3 @@
-export * from './common/models/render-flag';
 export * from './common/models/scrollable';
 export { getOrNil, switchCase } from './common/util/func.util';
 export * from './common/util/seo.util';

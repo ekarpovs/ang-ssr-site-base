@@ -1,4 +1,3 @@
-import { RenderFlag } from '~/app/shared';
 
 import { userRoutePaths } from './user.routes.path';
 import { UserDetailContainerComponent } from './user/user-detail/user-detail-container.component';
@@ -19,7 +18,6 @@ export const routes = [
     path: userRoutePaths.create,
     component: UserDetailContainerComponent,
     data: {
-      renderFlag: RenderFlag.Create,
       meta: {
         title: 'PUBLIC.USER.USER.USER_DETAIL.PAGE_TITLE',
         description: 'PUBLIC.USER.META_DESCRIPTION'
@@ -30,7 +28,6 @@ export const routes = [
     path: `${userRoutePaths.edit}/${userRoutePaths.item}`,
     component: UserDetailContainerComponent,
     data: {
-      renderFlag: RenderFlag.Update,
       meta: {
         title: 'PUBLIC.USER.USER.USER_DETAIL.PAGE_TITLE',
         description: 'PUBLIC.USER.META_DESCRIPTION'
@@ -41,7 +38,6 @@ export const routes = [
     path: `${userRoutePaths.delete}/${userRoutePaths.item}`,
     component: UserDetailContainerComponent,
     data: {
-      renderFlag: RenderFlag.Delete,
       meta: {
         title: 'PUBLIC.USER.USER.USER_DETAIL.PAGE_TITLE',
         description: 'PUBLIC.USER.META_DESCRIPTION'
