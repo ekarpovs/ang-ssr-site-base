@@ -10,7 +10,7 @@
 
 Most significant changes and improvements:
 
-- Fix state overloading after execution an each action.
+- Fixed state overloading after execution an each action.
 - Changed effects to avoid redurance backend calls.
 - Implemented real Login/Register with Authorization JWT token.
 - Implemented auth and routing via ngrx.
